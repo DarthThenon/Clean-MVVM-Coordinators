@@ -37,11 +37,17 @@ final class MealsCoordinator: BaseCoordinator {
     func showMeals(byCategory category: String) {
         let (vc, output) = mealsAssembler.assemble(with: category)
         
+        output.onShowDetails = { [unowned self] id in
+            showMealDetails(mealID: id)
+        }
+        
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func showMealDetails(mealID: String) {
         let coordinator = mealDetailsCoordinatorFactory(mealID)
+        
+        coordinator.start()
         
         addChild(coordinator, animated: true)
     }

@@ -14,6 +14,7 @@ protocol MealsViewModel {
     var title: String { get }
     
     func viewDidLoad()
+    func selectMeal(with id: String)
 }
 
 final class MealsViewModelImp: MealsViewModel, MealsOutput {
@@ -25,6 +26,8 @@ final class MealsViewModelImp: MealsViewModel, MealsOutput {
     let title: String
     
     var onFinish: (() -> Void)?
+    var onShowDetails: ((String) -> Void)?
+    
     var mealsPublisher: AnyPublisher<[Meal], Never> {
         mealsSubject.eraseToAnyPublisher()
     }
@@ -47,5 +50,9 @@ final class MealsViewModelImp: MealsViewModel, MealsOutput {
             }, receiveValue: { [unowned self] meals in
                 self.mealsSubject.send(meals)
             })
+    }
+    
+    func selectMeal(with id: String) {
+        onShowDetails?(id)
     }
 }

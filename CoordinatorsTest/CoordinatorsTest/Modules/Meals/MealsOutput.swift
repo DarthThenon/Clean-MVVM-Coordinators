@@ -8,5 +8,5 @@
 import Foundation
 
 protocol MealsOutput: ModuleOutput {
-    
+    var onShowDetails: ((String) -> Void)? { get set }
 }
