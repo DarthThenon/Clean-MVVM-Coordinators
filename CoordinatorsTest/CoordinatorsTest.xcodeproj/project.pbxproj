@@ -18,7 +18,6 @@
 		F61A64CC27AC012A00348CB9 /* GetMealCategoriesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A64CB27AC012A00348CB9 /* GetMealCategoriesUseCase.swift */; };
 		F61A64CE27AC014F00348CB9 /* MealCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A64CD27AC014F00348CB9 /* MealCategory.swift */; };
 		F61A64D127AC01B900348CB9 /* MealCategoriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A64D027AC01B900348CB9 /* MealCategoriesRepository.swift */; };
-		F61A64D327AC022A00348CB9 /* DataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A64D227AC022A00348CB9 /* DataError.swift */; };
 		F61A64E127AC02F100348CB9 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F61A64D927AC02F100348CB9 /* Data.framework */; };
 		F61A64E827AC02F100348CB9 /* DataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A64E727AC02F100348CB9 /* DataTests.swift */; };
 		F61A64E927AC02F100348CB9 /* Data.h in Headers */ = {isa = PBXBuildFile; fileRef = F61A64DB27AC02F100348CB9 /* Data.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -137,7 +136,6 @@
 		F61A64CB27AC012A00348CB9 /* GetMealCategoriesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMealCategoriesUseCase.swift; sourceTree = "<group>"; };
 		F61A64CD27AC014F00348CB9 /* MealCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCategory.swift; sourceTree = "<group>"; };
 		F61A64D027AC01B900348CB9 /* MealCategoriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCategoriesRepository.swift; sourceTree = "<group>"; };
-		F61A64D227AC022A00348CB9 /* DataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataError.swift; sourceTree = "<group>"; };
 		F61A64D927AC02F100348CB9 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F61A64DB27AC02F100348CB9 /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
 		F61A64E027AC02F100348CB9 /* DataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -240,11 +238,8 @@
 			isa = PBXGroup;
 			children = (
 				F61A64AB27AC000700348CB9 /* Domain.h */,
-				F61A64C527AC002400348CB9 /* Meal.swift */,
-				F61A64D227AC022A00348CB9 /* DataError.swift */,
-				F61A64CD27AC014F00348CB9 /* MealCategory.swift */,
-				F61A64CB27AC012A00348CB9 /* GetMealCategoriesUseCase.swift */,
-				F61A652327AC48DC00348CB9 /* GetMealByCategoryUseCase.swift */,
+				F61A653B27AC69D200348CB9 /* Models */,
+				F61A653C27AC69DE00348CB9 /* UseCases */,
 				F61A64CF27AC019D00348CB9 /* Repositories */,
 			);
 			path = Domain;
@@ -273,8 +268,7 @@
 			children = (
 				F61A64F827AC08FE00348CB9 /* Models */,
 				F61A64DB27AC02F100348CB9 /* Data.h */,
-				F61A64F427AC030F00348CB9 /* NetworkRepository.swift */,
-				F61A64F627AC07E800348CB9 /* MealsRepositoryImpl.swift */,
+				F61A653D27AC69EE00348CB9 /* Repositories */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -365,6 +359,7 @@
 		F61A651D27AC467600348CB9 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				F6A8790027A9592E0029DC63 /* Coordinator.swift */,
 				F61A651F27AC46B800348CB9 /* ModuleOutput.swift */,
 			);
 			path = Protocols;
@@ -398,6 +393,33 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		F61A653B27AC69D200348CB9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F61A64C527AC002400348CB9 /* Meal.swift */,
+				F61A64CD27AC014F00348CB9 /* MealCategory.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F61A653C27AC69DE00348CB9 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				F61A64CB27AC012A00348CB9 /* GetMealCategoriesUseCase.swift */,
+				F61A652327AC48DC00348CB9 /* GetMealByCategoryUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		F61A653D27AC69EE00348CB9 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				F61A64F427AC030F00348CB9 /* NetworkRepository.swift */,
+				F61A64F627AC07E800348CB9 /* MealsRepositoryImpl.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		F6A878DC27A958100029DC63 = {
 			isa = PBXGroup;
 			children = (
@@ -427,7 +449,6 @@
 		F6A878E727A958100029DC63 /* CoordinatorsTest */ = {
 			isa = PBXGroup;
 			children = (
-				F6A878FF27A959210029DC63 /* Coordinator */,
 				F61A650E27AC33C500348CB9 /* Assemblers */,
 				F61A650927AC325C00348CB9 /* DependencyContainers */,
 				F61A650527AC172500348CB9 /* Modules */,
@@ -442,14 +463,6 @@
 				F6A878F627A958120029DC63 /* Info.plist */,
 			);
 			path = CoordinatorsTest;
-			sourceTree = "<group>";
-		};
-		F6A878FF27A959210029DC63 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				F6A8790027A9592E0029DC63 /* Coordinator.swift */,
-			);
-			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -709,7 +722,6 @@
 				F61A64CA27AC00C300348CB9 /* RecipesRepository.swift in Sources */,
 				F61A64D127AC01B900348CB9 /* MealCategoriesRepository.swift in Sources */,
 				F61A64CE27AC014F00348CB9 /* MealCategory.swift in Sources */,
-				F61A64D327AC022A00348CB9 /* DataError.swift in Sources */,
 				F61A652427AC48DC00348CB9 /* GetMealByCategoryUseCase.swift in Sources */,
 				F61A652627AC49C600348CB9 /* MealsByCategoryRepository.swift in Sources */,
 				F61A64CC27AC012A00348CB9 /* GetMealCategoriesUseCase.swift in Sources */,
