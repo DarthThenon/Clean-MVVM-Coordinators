@@ -9,6 +9,7 @@ import UIKit
 
 final class MealsCoordinator: Coordinator {
     private let mealsCategoriesAssembler: MealsCategoriesAssembable
+    
     let navigationController: UINavigationController
     var childs: [Coordinator] = []
     var parent: WeakRefCoordinatorWrapper?

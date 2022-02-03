@@ -8,13 +8,6 @@
 import Domain
 import UIKit
 
-protocol ModuleOutput {
-    var onFinish: (() -> Void)? { get set }
-}
-
-protocol MealsCategoriesOutput: ModuleOutput {
-}
-
 protocol MealsCategoriesAssembable {
     func assemble() -> (UIViewController, MealsCategoriesOutput)
 }

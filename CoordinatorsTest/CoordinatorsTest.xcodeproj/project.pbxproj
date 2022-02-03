@@ -38,6 +38,9 @@
 		F61A651627AC3A8900348CB9 /* MealCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A651427AC3A8900348CB9 /* MealCategoryTableViewCell.swift */; };
 		F61A651727AC3A8900348CB9 /* MealCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F61A651527AC3A8900348CB9 /* MealCategoryTableViewCell.xib */; };
 		F61A651927AC401300348CB9 /* UIImageView + Fetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A651827AC401300348CB9 /* UIImageView + Fetching.swift */; };
+		F61A651C27AC465300348CB9 /* WeakRefCoordinatorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A651B27AC465300348CB9 /* WeakRefCoordinatorWrapper.swift */; };
+		F61A652027AC46B800348CB9 /* ModuleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A651F27AC46B800348CB9 /* ModuleOutput.swift */; };
+		F61A652227AC46E200348CB9 /* MealsCategoriesOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A652127AC46E200348CB9 /* MealsCategoriesOutput.swift */; };
 		F6A878E927A958100029DC63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A878E827A958100029DC63 /* AppDelegate.swift */; };
 		F6A878EB27A958100029DC63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A878EA27A958100029DC63 /* SceneDelegate.swift */; };
 		F6A878F227A958120029DC63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6A878F127A958120029DC63 /* Assets.xcassets */; };
@@ -143,6 +146,9 @@
 		F61A651427AC3A8900348CB9 /* MealCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		F61A651527AC3A8900348CB9 /* MealCategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealCategoryTableViewCell.xib; sourceTree = "<group>"; };
 		F61A651827AC401300348CB9 /* UIImageView + Fetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Fetching.swift"; sourceTree = "<group>"; };
+		F61A651B27AC465300348CB9 /* WeakRefCoordinatorWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefCoordinatorWrapper.swift; sourceTree = "<group>"; };
+		F61A651F27AC46B800348CB9 /* ModuleOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleOutput.swift; sourceTree = "<group>"; };
+		F61A652127AC46E200348CB9 /* MealsCategoriesOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsCategoriesOutput.swift; sourceTree = "<group>"; };
 		F6A878E527A958100029DC63 /* CoordinatorsTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoordinatorsTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6A878E827A958100029DC63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6A878EA27A958100029DC63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -291,6 +297,7 @@
 				F61A651327AC3A7400348CB9 /* Cells */,
 				F61A650127AC0FDA00348CB9 /* MealsCategoriesViewController.swift */,
 				F61A650727AC182400348CB9 /* MealsCategoriesViewModel.swift */,
+				F61A652127AC46E200348CB9 /* MealsCategoriesOutput.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -319,6 +326,30 @@
 				F61A651527AC3A8900348CB9 /* MealCategoryTableViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		F61A651A27AC464200348CB9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F61A651B27AC465300348CB9 /* WeakRefCoordinatorWrapper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F61A651D27AC467600348CB9 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F61A651F27AC46B800348CB9 /* ModuleOutput.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		F61A651E27AC467D00348CB9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F61A651827AC401300348CB9 /* UIImageView + Fetching.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		F6A878DC27A958100029DC63 = {
@@ -355,7 +386,9 @@
 				F61A650927AC325C00348CB9 /* DependencyContainers */,
 				F61A650527AC172500348CB9 /* Modules */,
 				F61A650327AC0FE000348CB9 /* Coordinators */,
-				F61A651827AC401300348CB9 /* UIImageView + Fetching.swift */,
+				F61A651A27AC464200348CB9 /* Helpers */,
+				F61A651D27AC467600348CB9 /* Protocols */,
+				F61A651E27AC467D00348CB9 /* Extensions */,
 				F6A878E827A958100029DC63 /* AppDelegate.swift */,
 				F6A878EA27A958100029DC63 /* SceneDelegate.swift */,
 				F6A878F127A958120029DC63 /* Assets.xcassets */,
@@ -670,12 +703,15 @@
 				F61A651027AC33E700348CB9 /* MealsCategoriesAssembler.swift in Sources */,
 				F6A8790127A9592E0029DC63 /* Coordinator.swift in Sources */,
 				F6A878E927A958100029DC63 /* AppDelegate.swift in Sources */,
+				F61A652227AC46E200348CB9 /* MealsCategoriesOutput.swift in Sources */,
 				F61A650B27AC328100348CB9 /* AppDependencyContainer.swift in Sources */,
 				F61A650D27AC334500348CB9 /* MealDependencyContainer.swift in Sources */,
 				F61A651227AC362400348CB9 /* MealsCoordinator.swift in Sources */,
 				F61A650827AC182400348CB9 /* MealsCategoriesViewModel.swift in Sources */,
 				F6A878EB27A958100029DC63 /* SceneDelegate.swift in Sources */,
+				F61A651C27AC465300348CB9 /* WeakRefCoordinatorWrapper.swift in Sources */,
 				F61A650227AC0FDB00348CB9 /* MealsCategoriesViewController.swift in Sources */,
+				F61A652027AC46B800348CB9 /* ModuleOutput.swift in Sources */,
 				F61A651627AC3A8900348CB9 /* MealCategoryTableViewCell.swift in Sources */,
 				F61A651927AC401300348CB9 /* UIImageView + Fetching.swift in Sources */,
 			);

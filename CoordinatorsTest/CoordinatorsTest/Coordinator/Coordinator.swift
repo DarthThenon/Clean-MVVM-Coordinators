@@ -7,14 +7,6 @@
 
 import UIKit
 
-final class WeakRefCoordinatorWrapper {
-    private(set) weak var weakReference: Coordinator?
-    
-    init(coordinator: Coordinator) {
-        self.weakReference = coordinator
-    }
-}
-
 protocol Coordinator: AnyObject {
     var navigationController: UINavigationController { get }
     var childs: [Coordinator] { get set }
