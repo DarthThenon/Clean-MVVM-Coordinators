@@ -11,6 +11,7 @@ import Combine
 
 protocol MealsViewModel {
     var mealsPublisher: AnyPublisher<[Meal], Never> { get }
+    var title: String { get }
     
     func viewDidLoad()
 }
@@ -21,12 +22,15 @@ final class MealsViewModelImp: MealsViewModel, MealsOutput {
     private let category: String
     private var cancellable: AnyCancellable?
     
+    let title: String
+    
     var onFinish: (() -> Void)?
     var mealsPublisher: AnyPublisher<[Meal], Never> {
         mealsSubject.eraseToAnyPublisher()
     }
     
     init(category: String, getMealByCategoryUseCase: GetMealsByCategoryUseCase) {
+        self.title = category
         self.getMealByCategoryUseCase = getMealByCategoryUseCase
         self.category = category
     }

@@ -30,6 +30,8 @@ final class MealsViewController: UITableViewController {
 
         view.backgroundColor = .white
         
+        navigationItem.title = viewModel.title
+        
         tableView.register(UINib(nibName: "MealTableViewCell", bundle: .main), forCellReuseIdentifier: "MealTableViewCell")
         
         cancellable = viewModel.mealsPublisher
