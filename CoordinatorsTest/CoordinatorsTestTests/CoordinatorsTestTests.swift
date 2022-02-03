@@ -24,7 +24,8 @@ class CoordinatorsTestTests: XCTestCase {
         checkDeallocation(of: appCoordinator)
         
         let depContainer = MealDependencyContainer(getMealsCategoriesUseCase: MockGetMealsCategoriesUseCase(),
-                                                   getMealsByCategoryUseCase: MockGetMealsByCategoryUseCase())
+                                                   getMealsByCategoryUseCase: MockGetMealsByCategoryUseCase(),
+                                                   getMealDetailsByIdUseCase: <#GetMealDetailsByIdUseCase#>)
         
         checkDeallocation(of: depContainer)
         

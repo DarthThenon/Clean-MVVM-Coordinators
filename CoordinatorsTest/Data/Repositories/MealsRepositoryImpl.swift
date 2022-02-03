@@ -37,6 +37,17 @@ extension MealsRepositoryImpl: MealsByCategoryRepository {
     }
 }
 
+extension MealsRepositoryImpl: MealDetailsRepository {
+    public func getMealDetails(by id: String) -> AnyPublisher<MealDetails, Error> {
+        let url = URL(string: "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(id)")!
+        let requestPublisher: AnyPublisher<MealDetailsContainerDecodable, Error> = networkRepository.executeRequest(for: url)
+        
+        return requestPublisher
+            .map { $0.meals.map { $0.toDomainModel() }.first! }
+            .eraseToAnyPublisher()
+    }
+}
+
 private extension MealCategoryDecodable {
     func toDomainModel() -> MealCategory {
         MealCategory.init(id: idCategory,
