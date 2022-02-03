@@ -8,7 +8,7 @@
 import UIKit
 
 protocol Coordinator: AnyObject {
-    var navigationController: UINavigationController { get }
+    var navigationController: UINavigationController? { get }
     var childs: [Coordinator] { get set }
     var parent: WeakRefCoordinatorWrapper? { get set }
     
@@ -22,6 +22,8 @@ protocol Coordinator: AnyObject {
 extension Coordinator {
     func removeFromParent() {
         parent?.weakReference?.removeChild(self)
+        
+        navigationController?.dismiss(animated: true)
     }
     
     func removeChild(_ child: Coordinator) {
@@ -41,7 +43,8 @@ extension Coordinator {
         childs.append(child)
         
         child.parent = WeakRefCoordinatorWrapper(coordinator: self)
-        
-        navigationController.present(child.navigationController, animated: animated)
+        child.navigationController.flatMap {
+            navigationController?.present($0, animated: animated)
+        }
     }
 }

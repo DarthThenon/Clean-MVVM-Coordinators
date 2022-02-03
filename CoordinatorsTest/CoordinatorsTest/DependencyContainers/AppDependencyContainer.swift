@@ -17,9 +17,11 @@ final class AppDependencyContainer {
     }
     
     func createMealDependencyContainer() -> MealDependencyContainer {
-        let mealCategoriesRepository = MealCategoriesRepositoryImpl(networkRepository: networkRepository)
+        let mealCategoriesRepository = MealsRepositoryImpl(networkRepository: networkRepository)
         let getMealCategoriesUseCase = GetMealCategoriesUseCaseImp(mealCategoriesRepository: mealCategoriesRepository)
+        let getMealsByCategoryUseCase = GetMealsByCategoryUseCaseImp(mealsByCategoryRepository: mealCategoriesRepository)
         
-        return MealDependencyContainer(getMealsCategoriesUseCase: getMealCategoriesUseCase)
+        return MealDependencyContainer(getMealsCategoriesUseCase: getMealCategoriesUseCase,
+                                       getMealsByCategoryUseCase: getMealsByCategoryUseCase)
     }
 }

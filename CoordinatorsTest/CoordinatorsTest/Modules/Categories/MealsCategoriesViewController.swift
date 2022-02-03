@@ -53,9 +53,18 @@ final class MealsCategoriesViewController: UITableViewController {
         let category = categories[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "MealCategoryTableViewCell", for: indexPath) as! MealCategoryTableViewCell
         
+        cell.selectionStyle = .gray
         cell.setup(with: MealCategoryCellViewModel(category: category))
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let category = categories[indexPath.row]
+        
+        viewModel.selectCategory(category.title)
     }
 }
 

@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol ModuleOutput {
+protocol ModuleOutput: AnyObject {
     var onFinish: (() -> Void)? { get set }
 }

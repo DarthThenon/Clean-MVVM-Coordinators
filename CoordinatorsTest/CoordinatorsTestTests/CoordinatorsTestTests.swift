@@ -6,44 +6,68 @@
 //
 
 import XCTest
+import Domain
+import Combine
 @testable import CoordinatorsTest
 
 class CoordinatorsTestTests: XCTestCase {
-    func test_RecipeCoordinator_storesParent_asWeakRef() {
-        let recipesCoordinator = RecipesCoordinator(navigationController: UINavigationController(),
-                                                    coordinatorsFactory: .init())
+    func test_mealsCategoriesViewController_deallocation() {
+        let viewModel = MockMealsCategoriesViewModel()
+        let mealsCategoriesViewController = MealsCategoriesViewController(viewModel: viewModel)
         
-        checkDeallocation(of: recipesCoordinator)
-        
-        recipesCoordinator.start()
-        
-        let recipeCoordinator = RecipeCoordinator(navigationController: .init(),
-                                                  coordinatorsFactory: .init())
-        
-        checkDeallocation(of: recipeCoordinator)
-        
-        recipeCoordinator.start()
-        
-        recipesCoordinator.addChild(recipeCoordinator)
+        checkDeallocation(of: mealsCategoriesViewController)
     }
     
-    func test_RecipesCoordinator_storesParent_asWeakRef() {
-        let recipeCoordinator = RecipeCoordinator(navigationController: UINavigationController(),
-                                                    coordinatorsFactory: .init())
+    func test_deallocation_ofAllSequence() {
+        let appCoordinator = AppCoordinator()
         
-        checkDeallocation(of: recipeCoordinator)
+        checkDeallocation(of: appCoordinator)
         
-        recipeCoordinator.start()
+        let depContainer = MealDependencyContainer(getMealsCategoriesUseCase: MockGetMealsCategoriesUseCase(),
+                                                   getMealsByCategoryUseCase: MockGetMealsByCategoryUseCase())
         
-        let recipesCoordinator = RecipesCoordinator(navigationController: .init(),
-                                                  coordinatorsFactory: .init())
+        checkDeallocation(of: depContainer)
         
-        checkDeallocation(of: recipesCoordinator)
+        let coordinator = depContainer.createMealsCoordinator()
         
-        recipesCoordinator.start()
+        checkDeallocation(of: coordinator)
         
-        recipeCoordinator.addChild(recipesCoordinator)
+        appCoordinator.addChild(coordinator)
+        
+        coordinator.start()
+        
+        coordinator.showMeals(byCategory: "asfas")
     }
+}
+
+private final class MockGetMealsByCategoryUseCase: GetMealsByCategoryUseCase {
+    func execute(from category: String) -> AnyPublisher<[Meal], Error> {
+        Just([Meal]())
+            .mapError({ _ in
+                NSError()
+            })
+            .eraseToAnyPublisher()
+    }
+}
+
+private final class MockGetMealsCategoriesUseCase: GetMealCategoriesUseCase {
+    func execute() -> AnyPublisher<[MealCategory], Error> {
+        Just([MealCategory]())
+            .mapError({ _ in
+                NSError()
+            })
+            .eraseToAnyPublisher()
+    }
+}
+
+private final class MockMealsCategoriesViewModel: MealsCategoriesViewModel, MealsCategoriesOutput {
+    var categoriesPublisher: AnyPublisher<[MealCategory], Never> = Just([MealCategory]()).eraseToAnyPublisher()
+    
+    func viewDidLoad() {}
+    func selectCategory(_ category: String) {}
+    
+    var onSelectCategory: ((String) -> Void)?
+    var onFinish: (() -> Void)?
 }
 
 extension XCTestCase {

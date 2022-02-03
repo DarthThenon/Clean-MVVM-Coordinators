@@ -7,23 +7,33 @@
 
 import UIKit
 
-final class MealsCoordinator: Coordinator {
+final class MealsCoordinator: BaseCoordinator {
     private let mealsCategoriesAssembler: MealsCategoriesAssembable
-    
-    let navigationController: UINavigationController
-    var childs: [Coordinator] = []
-    var parent: WeakRefCoordinatorWrapper?
+    private let mealsAssembler: MealsAssembable
     
     init(navigationController: UINavigationController,
-         mealsCategoriesAssembler: MealsCategoriesAssembable) {
+         mealsCategoriesAssembler: MealsCategoriesAssembable,
+         mealsAssembler: MealsAssembable) {
         
-        self.navigationController = navigationController
         self.mealsCategoriesAssembler = mealsCategoriesAssembler
+        self.mealsAssembler = mealsAssembler
+        
+        super.init(navigationController: navigationController)
     }
     
-    func start() {
-        let (vc, _) = mealsCategoriesAssembler.assemble()
+    override func start() {
+        let (vc, output) = mealsCategoriesAssembler.assemble()
         
-        navigationController.setViewControllers([vc], animated: false)
+        output.onSelectCategory = { [unowned self] category in
+            showMeals(byCategory: category)
+        }
+        
+        navigationController?.setViewControllers([vc], animated: false)
+    }
+    
+    func showMeals(byCategory category: String) {
+        let (vc, _) = mealsAssembler.assemble(with: category)
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

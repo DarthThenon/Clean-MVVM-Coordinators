@@ -9,6 +9,7 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private lazy var appDependencyContainer = AppDependencyContainer()
+    private lazy var appCoordinator = AppCoordinator()
     
     var window: UIWindow?
 
@@ -21,6 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let coordinator = appDependencyContainer
             .createMealDependencyContainer()
             .createMealsCoordinator()
+        
+        appCoordinator.addChild(coordinator)
         
         coordinator.start()
         

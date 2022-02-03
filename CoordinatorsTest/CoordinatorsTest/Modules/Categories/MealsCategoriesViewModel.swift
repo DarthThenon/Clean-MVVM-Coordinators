@@ -13,6 +13,7 @@ protocol MealsCategoriesViewModel {
     var categoriesPublisher: AnyPublisher<[MealCategory], Never> { get }
     
     func viewDidLoad()
+    func selectCategory(_ category: String)
 }
 
 final class MealsCategoriesViewModelImpl: MealsCategoriesViewModel, MealsCategoriesOutput {
@@ -21,6 +22,7 @@ final class MealsCategoriesViewModelImpl: MealsCategoriesViewModel, MealsCategor
     private var cancellable: AnyCancellable?
     
     var onFinish: (() -> Void)?
+    var onSelectCategory: ((String) -> Void)?
     var categoriesPublisher: AnyPublisher<[MealCategory], Never> {
         categoriesSubject.eraseToAnyPublisher()
     }
@@ -41,5 +43,9 @@ final class MealsCategoriesViewModelImpl: MealsCategoriesViewModel, MealsCategor
             }, receiveValue: { [unowned self] categories in
                 self.categoriesSubject.send(categories)
             })
+    }
+    
+    func selectCategory(_ category: String) {
+        onSelectCategory?(category)
     }
 }

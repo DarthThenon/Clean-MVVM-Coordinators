@@ -10,15 +10,20 @@ import Domain
 
 final class MealDependencyContainer {
     private let getMealsCategoriesUseCase: GetMealCategoriesUseCase
+    private let getMealsByCategoryUseCase: GetMealsByCategoryUseCase
     
-    init(getMealsCategoriesUseCase: GetMealCategoriesUseCase) {
+    init(getMealsCategoriesUseCase: GetMealCategoriesUseCase,
+         getMealsByCategoryUseCase: GetMealsByCategoryUseCase) {
         self.getMealsCategoriesUseCase = getMealsCategoriesUseCase
+        self.getMealsByCategoryUseCase = getMealsByCategoryUseCase
     }
     
     func createMealsCoordinator() -> MealsCoordinator {
-        let assembler = MealsCategoriesAssembler(getMealsCategoriesUseCase: getMealsCategoriesUseCase)
+        let categoriesAssembler = MealsCategoriesAssembler(getMealsCategoriesUseCase: getMealsCategoriesUseCase)
+        let mealsAssember = MealsAssembler(getMealsByCategoryUseCase: getMealsByCategoryUseCase)
         
         return MealsCoordinator(navigationController: .init(),
-                                mealsCategoriesAssembler: assembler)
+                                mealsCategoriesAssembler: categoriesAssembler,
+                                mealsAssembler: mealsAssember)
     }
 }

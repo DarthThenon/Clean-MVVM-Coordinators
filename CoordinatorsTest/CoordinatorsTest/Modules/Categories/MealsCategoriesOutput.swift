@@ -8,5 +8,6 @@
 import Foundation
 
 protocol MealsCategoriesOutput: ModuleOutput {
+    var onSelectCategory: ((String) -> Void)? { get set }
 }
 

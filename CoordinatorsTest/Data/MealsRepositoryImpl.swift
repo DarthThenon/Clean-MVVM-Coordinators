@@ -1,5 +1,5 @@
 //
-//  MealCategoriesRepository.swift
+//  MealsRepositoryImpl.swift
 //  Data
 //
 //  Created by Dmytro Yurchenko on 03.02.2022.
@@ -9,7 +9,7 @@ import Foundation
 import Domain
 import Combine
 
-public final class MealCategoriesRepositoryImpl: MealCategoriesRepository {
+public final class MealsRepositoryImpl: MealCategoriesRepository {
     let networkRepository: NetworkRepository
     
     public init(networkRepository: NetworkRepository) {
@@ -22,6 +22,17 @@ public final class MealCategoriesRepositoryImpl: MealCategoriesRepository {
          
         return requestPublisher
             .map { $0.categories.map { $0.toDomainModel() } }
+            .eraseToAnyPublisher()
+    }
+}
+
+extension MealsRepositoryImpl: MealsByCategoryRepository {
+    public func getMeals(by category: String) -> AnyPublisher<[Meal], Error> {
+        let url = URL(string: "https://themealdb.com/api/json/v1/1/filter.php?c=\(category)")!
+        let requestPublisher: AnyPublisher<MealsContainerDecodable, Error> = networkRepository.executeRequest(for: url)
+        
+        return requestPublisher
+            .map { $0.meals.map { $0.toDomainModel() } }
             .eraseToAnyPublisher()
     }
 }
