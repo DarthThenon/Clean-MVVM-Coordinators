@@ -30,6 +30,8 @@ final class MealsViewController: UITableViewController {
 
         view.backgroundColor = .white
         
+        tableView.register(UINib(nibName: "MealTableViewCell", bundle: .main), forCellReuseIdentifier: "MealTableViewCell")
+        
         cancellable = viewModel.mealsPublisher
             .sink { [unowned self] meals in
                 self.meals = meals
@@ -46,6 +48,18 @@ final class MealsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        let meal = meals[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MealTableViewCell", for: indexPath) as! MealTableViewCell
+        
+        cell.setup(with: MealCellViewModel(from: meal))
+        
+        return cell
+    }
+}
+
+private extension MealCellViewModel {
+    init(from meal: Meal) {
+        title = meal.title
+        imageUrl = meal.imageURL
     }
 }

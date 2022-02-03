@@ -49,6 +49,8 @@
 		F61A653127AC5B6300348CB9 /* MealsAssembable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A653027AC5B6300348CB9 /* MealsAssembable.swift */; };
 		F61A653327AC5B8B00348CB9 /* MealsOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A653227AC5B8B00348CB9 /* MealsOutput.swift */; };
 		F61A653527AC5FB200348CB9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A653427AC5FB200348CB9 /* AppCoordinator.swift */; };
+		F61A653927AC65B800348CB9 /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A653727AC65B800348CB9 /* MealTableViewCell.swift */; };
+		F61A653A27AC65B800348CB9 /* MealTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F61A653827AC65B800348CB9 /* MealTableViewCell.xib */; };
 		F6A878E927A958100029DC63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A878E827A958100029DC63 /* AppDelegate.swift */; };
 		F6A878EB27A958100029DC63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A878EA27A958100029DC63 /* SceneDelegate.swift */; };
 		F6A878F227A958120029DC63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6A878F127A958120029DC63 /* Assets.xcassets */; };
@@ -165,6 +167,8 @@
 		F61A653027AC5B6300348CB9 /* MealsAssembable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsAssembable.swift; sourceTree = "<group>"; };
 		F61A653227AC5B8B00348CB9 /* MealsOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsOutput.swift; sourceTree = "<group>"; };
 		F61A653427AC5FB200348CB9 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		F61A653727AC65B800348CB9 /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
+		F61A653827AC65B800348CB9 /* MealTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealTableViewCell.xib; sourceTree = "<group>"; };
 		F6A878E527A958100029DC63 /* CoordinatorsTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoordinatorsTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6A878E827A958100029DC63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6A878EA27A958100029DC63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -377,11 +381,21 @@
 		F61A652B27AC579700348CB9 /* Meals */ = {
 			isa = PBXGroup;
 			children = (
+				F61A653627AC659A00348CB9 /* Cells */,
 				F61A652C27AC57C000348CB9 /* MealsViewController.swift */,
 				F61A652E27AC57F500348CB9 /* MealsViewModel.swift */,
 				F61A653227AC5B8B00348CB9 /* MealsOutput.swift */,
 			);
 			path = Meals;
+			sourceTree = "<group>";
+		};
+		F61A653627AC659A00348CB9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F61A653727AC65B800348CB9 /* MealTableViewCell.swift */,
+				F61A653827AC65B800348CB9 /* MealTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		F6A878DC27A958100029DC63 = {
@@ -670,6 +684,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F61A653A27AC65B800348CB9 /* MealTableViewCell.xib in Resources */,
 				F6A878F527A958120029DC63 /* LaunchScreen.storyboard in Resources */,
 				F61A651727AC3A8900348CB9 /* MealCategoryTableViewCell.xib in Resources */,
 				F6A878F227A958120029DC63 /* Assets.xcassets in Resources */,
@@ -739,6 +754,7 @@
 				F6A8790127A9592E0029DC63 /* Coordinator.swift in Sources */,
 				F6A878E927A958100029DC63 /* AppDelegate.swift in Sources */,
 				F61A652227AC46E200348CB9 /* MealsCategoriesOutput.swift in Sources */,
+				F61A653927AC65B800348CB9 /* MealTableViewCell.swift in Sources */,
 				F61A650B27AC328100348CB9 /* AppDependencyContainer.swift in Sources */,
 				F61A650D27AC334500348CB9 /* MealDependencyContainer.swift in Sources */,
 				F61A653127AC5B6300348CB9 /* MealsAssembable.swift in Sources */,
