@@ -14,6 +14,7 @@ protocol Coordinator: AnyObject {
     
     func start()
     func removeFromParent()
+    func removeFromParent(animated: Bool)
     func removeChild(_ child: Coordinator)
     func addChild(_ child: Coordinator, animated: Bool)
     func addChild(_ child: Coordinator)
@@ -21,9 +22,13 @@ protocol Coordinator: AnyObject {
 
 extension Coordinator {
     func removeFromParent() {
+        removeFromParent(animated: true)
+    }
+    
+    func removeFromParent(animated: Bool) {
         parent?.weakReference?.removeChild(self)
         
-        navigationController?.dismiss(animated: true)
+        navigationController?.dismiss(animated: animated)
     }
     
     func removeChild(_ child: Coordinator) {

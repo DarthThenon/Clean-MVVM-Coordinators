@@ -30,6 +30,10 @@ final class MealDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close,
+                                                           target: self,
+                                                           action: #selector(closeAction))
+        
         viewModel.mealDetailsPublisher
             .sink { [unowned self] mealDetails in
                 setupUI(details: mealDetails)
@@ -43,5 +47,9 @@ final class MealDetailsViewController: UIViewController {
         mealTitleLabel.text = details.title
         mealImageView.fetchImage(from: details.imageUrl)
             .flatMap { $0.store(in: &cancellableSet) }
+    }
+    
+    @objc private func closeAction() {
+        viewModel.close()
     }
 }

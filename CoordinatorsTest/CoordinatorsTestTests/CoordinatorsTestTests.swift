@@ -25,9 +25,7 @@ class CoordinatorsTestTests: XCTestCase {
         
         let depContainer = MealDependencyContainer(getMealsCategoriesUseCase: MockGetMealsCategoriesUseCase(),
                                                    getMealsByCategoryUseCase: MockGetMealsByCategoryUseCase(),
-                                                   getMealDetailsByIdUseCase: <#GetMealDetailsByIdUseCase#>)
-        
-        checkDeallocation(of: depContainer)
+                                                   getMealDetailsByIdUseCase: MockGetMealDetailsUseCase())
         
         let coordinator = depContainer.createMealsCoordinator()
         
@@ -38,6 +36,24 @@ class CoordinatorsTestTests: XCTestCase {
         coordinator.start()
         
         coordinator.showMeals(byCategory: "asfas")
+    }
+    
+    func test_coordinator_deletedFromParent() {
+        let depContainer = MealDependencyContainer(getMealsCategoriesUseCase: MockGetMealsCategoriesUseCase(),
+                                                   getMealsByCategoryUseCase: MockGetMealsByCategoryUseCase(),
+                                                   getMealDetailsByIdUseCase: MockGetMealDetailsUseCase())
+        
+        let coordinator1 = depContainer.createMealsCoordinator()
+        let coordinator2 = depContainer.createMealDetailsCoordinator(id: UUID().uuidString)
+        
+        checkDeallocation(of: coordinator1)
+        checkDeallocation(of: coordinator2)
+        
+        coordinator1.addChild(coordinator2)
+        
+        coordinator2.removeFromParent()
+        
+        XCTAssertTrue(coordinator1.childs.isEmpty)
     }
 }
 
@@ -61,6 +77,16 @@ private final class MockGetMealsCategoriesUseCase: GetMealCategoriesUseCase {
     }
 }
 
+private final class MockGetMealDetailsUseCase: GetMealDetailsByIdUseCase {
+    func execute(with id: String) -> AnyPublisher<MealDetails, Error> {
+        Just(createMealDetails())
+            .mapError({ _ in
+                NSError()
+            })
+            .eraseToAnyPublisher()
+    }
+}
+
 private final class MockMealsCategoriesViewModel: MealsCategoriesViewModel, MealsCategoriesOutput {
     var categoriesPublisher: AnyPublisher<[MealCategory], Never> = Just([MealCategory]()).eraseToAnyPublisher()
     
@@ -69,6 +95,18 @@ private final class MockMealsCategoriesViewModel: MealsCategoriesViewModel, Meal
     
     var onSelectCategory: ((String) -> Void)?
     var onFinish: (() -> Void)?
+}
+
+private func createMealDetails() -> MealDetails {
+    MealDetails(id: UUID().uuidString,
+                title: "Test",
+                category: "Test",
+                nationality: "Test",
+                instruction: "Test Instruction",
+                imageUrl: nil,
+                ingredients: [],
+                tags: nil,
+                link: nil)
 }
 
 extension XCTestCase {
