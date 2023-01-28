@@ -11,8 +11,6 @@
 		F61A64B127AC000700348CB9 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F61A64A927AC000700348CB9 /* Domain.framework */; };
 		F61A64B827AC000700348CB9 /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A64B727AC000700348CB9 /* DomainTests.swift */; };
 		F61A64B927AC000700348CB9 /* Domain.h in Headers */ = {isa = PBXBuildFile; fileRef = F61A64AB27AC000700348CB9 /* Domain.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F61A64BC27AC000700348CB9 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F61A64A927AC000700348CB9 /* Domain.framework */; };
-		F61A64BD27AC000700348CB9 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F61A64A927AC000700348CB9 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F61A64C627AC002400348CB9 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A64C527AC002400348CB9 /* Meal.swift */; };
 		F61A64CA27AC00C300348CB9 /* RecipesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A64C927AC00C300348CB9 /* RecipesRepository.swift */; };
 		F61A64CC27AC012A00348CB9 /* GetMealCategoriesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A64CB27AC012A00348CB9 /* GetMealCategoriesUseCase.swift */; };
@@ -67,6 +65,18 @@
 		F90B819B27AC835F0055AB9C /* MealDetailsOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90B819A27AC835F0055AB9C /* MealDetailsOutput.swift */; };
 		F90B819D27AC84B00055AB9C /* MealDetailsAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90B819C27AC84B00055AB9C /* MealDetailsAssembler.swift */; };
 		F90B819F27AC86840055AB9C /* MealDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90B819E27AC86840055AB9C /* MealDetailsCoordinator.swift */; };
+		F90D45522985444600703CB4 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F61A64A927AC000700348CB9 /* Domain.framework */; };
+		F90D45532985444600703CB4 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F61A64A927AC000700348CB9 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F90D4559298549E600703CB4 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90D4558298549E600703CB4 /* ViewModel.swift */; };
+		F90D455B29854BD000703CB4 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90D455A29854BD000703CB4 /* BaseTableViewController.swift */; };
+		F943A5E62860FAF3001D3660 /* DimmingTransitionPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943A5E52860FAF3001D3660 /* DimmingTransitionPresentationController.swift */; };
+		F943A5E82860FD5A001D3660 /* ViewControllerTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943A5E72860FD5A001D3660 /* ViewControllerTransitionAnimator.swift */; };
+		F943A5EA2860FF41001D3660 /* ViewControllerTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943A5E92860FF41001D3660 /* ViewControllerTransitionAnimation.swift */; };
+		F943A5EC2861049B001D3660 /* ViewControllerTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943A5EB2861049B001D3660 /* ViewControllerTransitionManager.swift */; };
+		F943A5EE286105C2001D3660 /* CustomViewControllerPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943A5ED286105C2001D3660 /* CustomViewControllerPresentable.swift */; };
+		F943A5F1286108A9001D3660 /* ViewControllerVerticalPresentingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943A5F0286108A9001D3660 /* ViewControllerVerticalPresentingAnimation.swift */; };
+		F943A5F3286108DC001D3660 /* ViewControllerRoundedPresentingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943A5F2286108DC001D3660 /* ViewControllerRoundedPresentingAnimation.swift */; };
+		F984C03327E27F940094332E /* Domain.framework in Resources */ = {isa = PBXBuildFile; fileRef = F61A64A927AC000700348CB9 /* Domain.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,13 +101,6 @@
 			remoteGlobalIDString = F6A878E427A958100029DC63;
 			remoteInfo = CoordinatorsTest;
 		};
-		F61A64BA27AC000700348CB9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F6A878DD27A958100029DC63 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F61A64A827AC000700348CB9;
-			remoteInfo = Domain;
-		};
 		F61A64E227AC02F100348CB9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F6A878DD27A958100029DC63 /* Project object */;
@@ -119,6 +122,13 @@
 			remoteGlobalIDString = F61A64D827AC02F100348CB9;
 			remoteInfo = Data;
 		};
+		F90D45542985444600703CB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F6A878DD27A958100029DC63 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F61A64A827AC000700348CB9;
+			remoteInfo = Domain;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -129,7 +139,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				F61A64ED27AC02F100348CB9 /* Data.framework in Embed Frameworks */,
-				F61A64BD27AC000700348CB9 /* Domain.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F90D45562985444600703CB4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F90D45532985444600703CB4 /* Domain.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,6 +218,15 @@
 		F90B819A27AC835F0055AB9C /* MealDetailsOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailsOutput.swift; sourceTree = "<group>"; };
 		F90B819C27AC84B00055AB9C /* MealDetailsAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailsAssembler.swift; sourceTree = "<group>"; };
 		F90B819E27AC86840055AB9C /* MealDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailsCoordinator.swift; sourceTree = "<group>"; };
+		F90D4558298549E600703CB4 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		F90D455A29854BD000703CB4 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		F943A5E52860FAF3001D3660 /* DimmingTransitionPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimmingTransitionPresentationController.swift; sourceTree = "<group>"; };
+		F943A5E72860FD5A001D3660 /* ViewControllerTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTransitionAnimator.swift; sourceTree = "<group>"; };
+		F943A5E92860FF41001D3660 /* ViewControllerTransitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTransitionAnimation.swift; sourceTree = "<group>"; };
+		F943A5EB2861049B001D3660 /* ViewControllerTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTransitionManager.swift; sourceTree = "<group>"; };
+		F943A5ED286105C2001D3660 /* CustomViewControllerPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewControllerPresentable.swift; sourceTree = "<group>"; };
+		F943A5F0286108A9001D3660 /* ViewControllerVerticalPresentingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerVerticalPresentingAnimation.swift; sourceTree = "<group>"; };
+		F943A5F2286108DC001D3660 /* ViewControllerRoundedPresentingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerRoundedPresentingAnimation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +256,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F90D45522985444600703CB4 /* Domain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,7 +273,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F61A64EC27AC02F100348CB9 /* Data.framework in Frameworks */,
-				F61A64BC27AC000700348CB9 /* Domain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +361,7 @@
 		F61A650527AC172500348CB9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				F90D4557298549D900703CB4 /* Base */,
 				F90B819327AC82D30055AB9C /* MealDetails */,
 				F61A652B27AC579700348CB9 /* Meals */,
 				F61A650627AC172D00348CB9 /* Categories */,
@@ -463,6 +493,7 @@
 				F61A64DA27AC02F100348CB9 /* Data */,
 				F61A64E627AC02F100348CB9 /* DataTests */,
 				F6A878E627A958100029DC63 /* Products */,
+				F90D45512985444600703CB4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -482,6 +513,7 @@
 		F6A878E727A958100029DC63 /* CoordinatorsTest */ = {
 			isa = PBXGroup;
 			children = (
+				F943A5E42860F897001D3660 /* VCPresentation */,
 				F61A650E27AC33C500348CB9 /* Assemblers */,
 				F61A650927AC325C00348CB9 /* DependencyContainers */,
 				F61A650527AC172500348CB9 /* Modules */,
@@ -507,6 +539,44 @@
 				F90B819A27AC835F0055AB9C /* MealDetailsOutput.swift */,
 			);
 			path = MealDetails;
+			sourceTree = "<group>";
+		};
+		F90D45512985444600703CB4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F90D4557298549D900703CB4 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				F90D4558298549E600703CB4 /* ViewModel.swift */,
+				F90D455A29854BD000703CB4 /* BaseTableViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		F943A5E42860F897001D3660 /* VCPresentation */ = {
+			isa = PBXGroup;
+			children = (
+				F943A5EF2861089A001D3660 /* Animations */,
+				F943A5E52860FAF3001D3660 /* DimmingTransitionPresentationController.swift */,
+				F943A5E72860FD5A001D3660 /* ViewControllerTransitionAnimator.swift */,
+				F943A5E92860FF41001D3660 /* ViewControllerTransitionAnimation.swift */,
+				F943A5EB2861049B001D3660 /* ViewControllerTransitionManager.swift */,
+				F943A5ED286105C2001D3660 /* CustomViewControllerPresentable.swift */,
+			);
+			path = VCPresentation;
+			sourceTree = "<group>";
+		};
+		F943A5EF2861089A001D3660 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				F943A5F0286108A9001D3660 /* ViewControllerVerticalPresentingAnimation.swift */,
+				F943A5F2286108DC001D3660 /* ViewControllerRoundedPresentingAnimation.swift */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -594,10 +664,12 @@
 				F61A64D527AC02F100348CB9 /* Sources */,
 				F61A64D627AC02F100348CB9 /* Frameworks */,
 				F61A64D727AC02F100348CB9 /* Resources */,
+				F90D45562985444600703CB4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F90D45552985444600703CB4 /* PBXTargetDependency */,
 			);
 			name = Data;
 			productName = Data;
@@ -635,7 +707,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				F61A64BB27AC000700348CB9 /* PBXTargetDependency */,
 				F61A64EB27AC02F100348CB9 /* PBXTargetDependency */,
 			);
 			name = CoordinatorsTest;
@@ -741,6 +812,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F984C03327E27F940094332E /* Domain.framework in Resources */,
 				F61A653A27AC65B800348CB9 /* MealTableViewCell.xib in Resources */,
 				F6A878F527A958120029DC63 /* LaunchScreen.storyboard in Resources */,
 				F61A651727AC3A8900348CB9 /* MealCategoryTableViewCell.xib in Resources */,
@@ -817,9 +889,11 @@
 				F6A8790127A9592E0029DC63 /* Coordinator.swift in Sources */,
 				F6A878E927A958100029DC63 /* AppDelegate.swift in Sources */,
 				F90B819B27AC835F0055AB9C /* MealDetailsOutput.swift in Sources */,
+				F90D455B29854BD000703CB4 /* BaseTableViewController.swift in Sources */,
 				F61A652227AC46E200348CB9 /* MealsCategoriesOutput.swift in Sources */,
 				F61A653927AC65B800348CB9 /* MealTableViewCell.swift in Sources */,
 				F61A650B27AC328100348CB9 /* AppDependencyContainer.swift in Sources */,
+				F943A5EA2860FF41001D3660 /* ViewControllerTransitionAnimation.swift in Sources */,
 				F61A650D27AC334500348CB9 /* MealDependencyContainer.swift in Sources */,
 				F90B819D27AC84B00055AB9C /* MealDetailsAssembler.swift in Sources */,
 				F90B819F27AC86840055AB9C /* MealDetailsCoordinator.swift in Sources */,
@@ -829,14 +903,21 @@
 				F61A651227AC362400348CB9 /* MealsCoordinator.swift in Sources */,
 				F61A652D27AC57C000348CB9 /* MealsViewController.swift in Sources */,
 				F61A650827AC182400348CB9 /* MealsCategoriesViewModel.swift in Sources */,
+				F943A5EE286105C2001D3660 /* CustomViewControllerPresentable.swift in Sources */,
 				F6A878EB27A958100029DC63 /* SceneDelegate.swift in Sources */,
 				F61A653327AC5B8B00348CB9 /* MealsOutput.swift in Sources */,
 				F61A651C27AC465300348CB9 /* WeakRefCoordinatorWrapper.swift in Sources */,
 				F61A650227AC0FDB00348CB9 /* MealsCategoriesViewController.swift in Sources */,
+				F943A5EC2861049B001D3660 /* ViewControllerTransitionManager.swift in Sources */,
 				F61A652027AC46B800348CB9 /* ModuleOutput.swift in Sources */,
+				F943A5F3286108DC001D3660 /* ViewControllerRoundedPresentingAnimation.swift in Sources */,
+				F90D4559298549E600703CB4 /* ViewModel.swift in Sources */,
 				F61A653527AC5FB200348CB9 /* AppCoordinator.swift in Sources */,
 				F61A652F27AC57F500348CB9 /* MealsViewModel.swift in Sources */,
+				F943A5F1286108A9001D3660 /* ViewControllerVerticalPresentingAnimation.swift in Sources */,
 				F61A651627AC3A8900348CB9 /* MealCategoryTableViewCell.swift in Sources */,
+				F943A5E62860FAF3001D3660 /* DimmingTransitionPresentationController.swift in Sources */,
+				F943A5E82860FD5A001D3660 /* ViewControllerTransitionAnimator.swift in Sources */,
 				F61A651927AC401300348CB9 /* UIImageView + Fetching.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -859,11 +940,6 @@
 			target = F6A878E427A958100029DC63 /* CoordinatorsTest */;
 			targetProxy = F61A64B427AC000700348CB9 /* PBXContainerItemProxy */;
 		};
-		F61A64BB27AC000700348CB9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F61A64A827AC000700348CB9 /* Domain */;
-			targetProxy = F61A64BA27AC000700348CB9 /* PBXContainerItemProxy */;
-		};
 		F61A64E327AC02F100348CB9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F61A64D827AC02F100348CB9 /* Data */;
@@ -878,6 +954,11 @@
 			isa = PBXTargetDependency;
 			target = F61A64D827AC02F100348CB9 /* Data */;
 			targetProxy = F61A64EA27AC02F100348CB9 /* PBXContainerItemProxy */;
+		};
+		F90D45552985444600703CB4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F61A64A827AC000700348CB9 /* Domain */;
+			targetProxy = F90D45542985444600703CB4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
