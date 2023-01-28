@@ -21,7 +21,11 @@ final class MealDetailsCoordinator: BaseCoordinator {
     }
     
     override func start() {
-        let (vc, _) = mealDetailsAssembler.assemble(withMealId: mealID)
+        let (vc, output) = mealDetailsAssembler.assemble(withMealId: mealID)
+        
+        output.onFinish = { [unowned self] in
+            removeFromParent()
+        }
         
         navigationController?.setViewControllers([vc], animated: false)
     }

@@ -13,6 +13,7 @@ protocol MealDetailsViewModel {
     var mealDetailsPublisher: AnyPublisher<MealDetails, Never> { get }
     
     func viewDidLoad()
+    func close()
 }
 
 final class MealDetailsViewModelImp: MealDetailsViewModel, MealDetailsOutput {
@@ -45,6 +46,10 @@ final class MealDetailsViewModelImp: MealDetailsViewModel, MealDetailsOutput {
             }, receiveValue: { [unowned self] mealDetails in
                 mealDetailsSubject.send(mealDetails)
             })
+    }
+    
+    func close() {
+        onFinish?()
     }
 }
  

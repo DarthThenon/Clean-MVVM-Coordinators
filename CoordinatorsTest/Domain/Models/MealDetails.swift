@@ -15,7 +15,7 @@ public struct MealDetails {
     public let instruction: String
     public let imageUrl: URL?
     public let ingredients: [MealIngredient]
-    public let tags: String
+    public let tags: String?
     public let link: URL?
     
     public init(id: String,
@@ -25,7 +25,7 @@ public struct MealDetails {
          instruction: String,
          imageUrl: URL?,
          ingredients: [MealIngredient],
-         tags: String,
+         tags: String?,
          link: URL?) {
         
         self.id = id

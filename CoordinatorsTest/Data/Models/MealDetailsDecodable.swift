@@ -10,8 +10,8 @@ import Domain
 
 struct MealDetailsDecodable: Decodable {
     let idMeal, strMeal, strCategory: String
-    let strArea, strInstructions, strTags: String
-    let strMealThumb, strYoutube: String?
+    let strArea, strInstructions: String
+    let strMealThumb, strYoutube, strTags: String?
     
     let strIngredient1, strIngredient2, strIngredient3: String?
     let strIngredient4, strIngredient5, strIngredient6: String?
