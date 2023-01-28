@@ -20,7 +20,7 @@ final class MealDetailsAssembler: MealDetailsAssembable {
     }
     
     func assemble(withMealId id: String) -> (UIViewController, MealDetailsOutput) {
-        let viewModel = MealDetailsViewModelImp(mealID: id,
+        let viewModel = MealDetailsViewModel(mealID: id,
                                                 getMealDetailsByIdUseCase: getMealDetailsByIdUseCase)
         let viewController = MealDetailsViewController(viewModel: viewModel)
         

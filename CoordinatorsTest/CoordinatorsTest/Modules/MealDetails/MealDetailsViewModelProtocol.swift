@@ -1,5 +1,5 @@
 //
-//  MealDetailsViewModel.swift
+//  MealDetailsViewModelProtocol.swift
 //  CoordinatorsTest
 //
 //  Created by Dmitriy Yurchenko on 03.02.2022.
@@ -9,14 +9,14 @@ import Foundation
 import Combine
 import Domain
 
-protocol MealDetailsViewModel {
+protocol MealDetailsViewModelProtocol {
     var mealDetailsPublisher: AnyPublisher<MealDetails, Never> { get }
     
     func viewDidLoad()
     func close()
 }
 
-final class MealDetailsViewModelImp: MealDetailsViewModel, MealDetailsOutput {
+final class MealDetailsViewModel: MealDetailsViewModelProtocol, MealDetailsOutput {
     private let getMealDetailsByIdUseCase: GetMealDetailsByIdUseCase
     private let mealID: String
     private let mealDetailsSubject: PassthroughSubject<MealDetails, Never> = .init()

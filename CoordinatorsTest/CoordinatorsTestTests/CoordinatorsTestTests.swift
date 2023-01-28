@@ -87,7 +87,7 @@ private final class MockGetMealDetailsUseCase: GetMealDetailsByIdUseCase {
     }
 }
 
-private final class MockMealsCategoriesViewModel: MealsCategoriesViewModel, MealsCategoriesOutput {
+private final class MockMealsCategoriesViewModel: MealsCategoriesViewModelProtocol, MealsCategoriesOutput {
     var categoriesPublisher: AnyPublisher<[MealCategory], Never> = Just([MealCategory]()).eraseToAnyPublisher()
     
     func viewDidLoad() {}

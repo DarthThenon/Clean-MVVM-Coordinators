@@ -1,5 +1,5 @@
 //
-//  MealsCategoriesViewModel.swift
+//  MealsCategoriesViewModelProtocol.swift
 //  CoordinatorsTest
 //
 //  Created by Dmytro Yurchenko on 03.02.2022.
@@ -9,14 +9,14 @@ import Foundation
 import Domain
 import Combine
 
-protocol MealsCategoriesViewModel {
+protocol MealsCategoriesViewModelProtocol {
     var categoriesPublisher: AnyPublisher<[MealCategory], Never> { get }
     
     func viewDidLoad()
     func selectCategory(_ category: String)
 }
 
-final class MealsCategoriesViewModelImpl: MealsCategoriesViewModel, MealsCategoriesOutput {
+final class MealsCategoriesViewModel: MealsCategoriesViewModelProtocol, MealsCategoriesOutput {
     private let categoriesSubject: CurrentValueSubject<[MealCategory], Never> = .init([])
     private let getMealsCategoriesUseCase: GetMealCategoriesUseCase
     private var cancellable: AnyCancellable?

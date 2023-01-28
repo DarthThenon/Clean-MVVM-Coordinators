@@ -13,10 +13,10 @@ final class MealDetailsViewController: UIViewController {
     @IBOutlet private weak var mealImageView: UIImageView!
     @IBOutlet private weak var mealTitleLabel: UILabel!
     
-    private let viewModel: MealDetailsViewModel
+    private let viewModel: MealDetailsViewModelProtocol
     private var cancellableSet: Set<AnyCancellable> = []
     
-    init(viewModel: MealDetailsViewModel) {
+    init(viewModel: MealDetailsViewModelProtocol) {
         self.viewModel = viewModel
         
         super.init(nibName: "MealDetailsViewController", bundle: .main)

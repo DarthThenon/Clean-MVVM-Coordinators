@@ -14,12 +14,12 @@ final class MealsCategoriesViewController: UITableViewController, CustomViewCont
     
     private typealias DataSource = UITableViewDiffableDataSource<Int, MealCategory>
     
-    private let viewModel: MealsCategoriesViewModel
+    private let viewModel: MealsCategoriesViewModelProtocol
     private var categories: [MealCategory] = []
     private var cancellable: AnyCancellable?
     private lazy var dataSource: DataSource = createDataSource()
     
-    init(viewModel: MealsCategoriesViewModel) {
+    init(viewModel: MealsCategoriesViewModelProtocol) {
         self.viewModel = viewModel
         
         super.init(style: .plain)

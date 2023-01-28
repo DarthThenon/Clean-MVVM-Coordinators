@@ -1,5 +1,5 @@
 //
-//  MealsViewModel.swift
+//  MealsViewModelProtocol.swift
 //  CoordinatorsTest
 //
 //  Created by Dmytro Yurchenko on 03.02.2022.
@@ -9,7 +9,7 @@ import Foundation
 import Domain
 import Combine
 
-protocol MealsViewModel: ViewModel {
+protocol MealsViewModelProtocol: ViewModel {
     var mealsPublisher: AnyPublisher<[Meal], Never> { get }
     var title: String { get }
     
@@ -17,7 +17,7 @@ protocol MealsViewModel: ViewModel {
     func goBack()
 }
 
-final class MealsViewModelImp: BaseViewModel, MealsViewModel, MealsOutput {
+final class MealsViewModel: BaseViewModel, MealsViewModelProtocol, MealsOutput {
     private let mealsSubject: CurrentValueSubject<[Meal], Never> = .init([])
     private let getMealByCategoryUseCase: GetMealsByCategoryUseCase
     private let category: String

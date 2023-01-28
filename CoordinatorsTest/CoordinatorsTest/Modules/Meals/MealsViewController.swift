@@ -10,14 +10,14 @@ import Combine
 import Domain
 
 final class MealsViewController: BaseTableViewController {
-    private let viewModel: MealsViewModel
+    private let viewModel: MealsViewModelProtocol
     private var meals: [Meal] = []
     
     override var errorPublisher: AnyPublisher<Error, Never> {
         viewModel.errorPublisher
     }
     
-    init(viewModel: MealsViewModel) {
+    init(viewModel: MealsViewModelProtocol) {
         self.viewModel = viewModel
         
         super.init()
