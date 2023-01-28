@@ -9,20 +9,18 @@ import UIKit
 import Combine
 import Domain
 
-final class MealsViewController: UITableViewController {
+final class MealsViewController: BaseTableViewController {
     private let viewModel: MealsViewModel
-    private var cancellable: AnyCancellable?
     private var meals: [Meal] = []
+    
+    override var errorPublisher: AnyPublisher<Error, Never> {
+        viewModel.errorPublisher
+    }
     
     init(viewModel: MealsViewModel) {
         self.viewModel = viewModel
         
-        super.init(style: .plain)
-    }
-    
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init()
     }
     
     override func viewDidLoad() {
@@ -34,13 +32,18 @@ final class MealsViewController: UITableViewController {
         
         tableView.register(UINib(nibName: "MealTableViewCell", bundle: .main), forCellReuseIdentifier: "MealTableViewCell")
         
-        cancellable = viewModel.mealsPublisher
+        viewModel.mealsPublisher
             .sink { [unowned self] meals in
                 self.meals = meals
                 self.tableView.reloadData()
             }
+            .store(in: &cancellableSet)
         
         viewModel.viewDidLoad()
+    }
+    
+    override func onError() {
+        viewModel.goBack()
     }
 
     // MARK: - Table view data source

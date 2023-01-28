@@ -9,15 +9,15 @@ import Foundation
 import Domain
 import Combine
 
-protocol MealsViewModel {
+protocol MealsViewModel: ViewModel {
     var mealsPublisher: AnyPublisher<[Meal], Never> { get }
     var title: String { get }
     
-    func viewDidLoad()
     func selectMeal(with id: String)
+    func goBack()
 }
 
-final class MealsViewModelImp: MealsViewModel, MealsOutput {
+final class MealsViewModelImp: BaseViewModel, MealsViewModel, MealsOutput {
     private let mealsSubject: CurrentValueSubject<[Meal], Never> = .init([])
     private let getMealByCategoryUseCase: GetMealsByCategoryUseCase
     private let category: String
@@ -41,12 +41,11 @@ final class MealsViewModelImp: MealsViewModel, MealsOutput {
     func viewDidLoad() {
         cancellable = getMealByCategoryUseCase.execute(from: category)
             .receive(on: OperationQueue.main)
-            .sink(receiveCompletion: { completion in
+            .sink(receiveCompletion: { [unowned self] completion in
                 guard case .failure(let error) = completion
                 else { return }
                 
-                assertionFailure(error.localizedDescription)
-                
+                self.error = error
             }, receiveValue: { [unowned self] meals in
                 self.mealsSubject.send(meals)
             })
@@ -54,5 +53,9 @@ final class MealsViewModelImp: MealsViewModel, MealsOutput {
     
     func selectMeal(with id: String) {
         onShowDetails?(id)
+    }
+    
+    func goBack() {
+        onFinish?()
     }
 }

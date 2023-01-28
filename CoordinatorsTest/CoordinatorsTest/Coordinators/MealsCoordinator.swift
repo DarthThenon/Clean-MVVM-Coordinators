@@ -40,6 +40,9 @@ final class MealsCoordinator: BaseCoordinator {
         output.onShowDetails = { [unowned self] id in
             showMealDetails(mealID: id)
         }
+        output.onFinish = { [unowned self] in
+            navigationController?.popViewController(animated: true)
+        }
         
         navigationController?.pushViewController(vc, animated: true)
     }
