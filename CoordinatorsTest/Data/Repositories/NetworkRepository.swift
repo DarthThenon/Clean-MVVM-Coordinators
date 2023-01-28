@@ -23,7 +23,23 @@ public final class RealNetworkRepository: NetworkRepository {
         return session.dataTaskPublisher(for: url)
             .retry(1)
             .map { $0.data }
+            .printPrettyJSON()
             .decode(type: R.self, decoder: decoder)
             .eraseToAnyPublisher()
+    }
+}
+
+extension Publisher where Output == Data {
+    func printPrettyJSON() -> Publishers.Map<Self, Data> {
+        map { data in
+            if let jsonObject = try? JSONSerialization.jsonObject(with: data),
+               let prettyPrintedData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted),
+               let prettyPrintedString = NSString(data: prettyPrintedData, encoding: String.Encoding.utf8.rawValue) {
+                
+                Swift.print(prettyPrintedString)
+            }
+            
+            return data
+        }
     }
 }
