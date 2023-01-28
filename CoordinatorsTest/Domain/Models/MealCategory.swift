@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct MealCategory {
+public struct MealCategory: Hashable {
     public let id, title, description: String
     public let imageURL: URL?
     
