@@ -9,10 +9,15 @@ import UIKit
 import Domain
 import Combine
 
-final class MealsCategoriesViewController: UITableViewController {
+final class MealsCategoriesViewController: UITableViewController, CustomViewControllerPresentable {
+    var transitionDelegate: UIViewControllerTransitioningDelegate?
+    
+    private typealias DataSource = UITableViewDiffableDataSource<Int, MealCategory>
+    
     private let viewModel: MealsCategoriesViewModel
     private var categories: [MealCategory] = []
     private var cancellable: AnyCancellable?
+    private lazy var dataSource: DataSource = createDataSource()
     
     init(viewModel: MealsCategoriesViewModel) {
         self.viewModel = viewModel
@@ -37,34 +42,46 @@ final class MealsCategoriesViewController: UITableViewController {
         cancellable = viewModel.categoriesPublisher
             .sink(receiveValue: { [unowned self] categories in
                 self.categories = categories
-                self.tableView.reloadData()
+                self.reloadTable()
             })
         
         viewModel.viewDidLoad()
     }
-
-    // MARK: - Table view data source
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories.count
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+//        let vc = UIViewController()
+//        
+//        vc.view.backgroundColor = .purple
+//        
+//        present(vc, duration: 10, withAnimationType: ViewControllerRoundedPresentingAnimation.self)
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let category = categories[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MealCategoryTableViewCell", for: indexPath) as! MealCategoryTableViewCell
-        
-        cell.selectionStyle = .gray
-        cell.setup(with: MealCategoryCellViewModel(category: category))
-        
-        return cell
+    private func createDataSource() -> DataSource {
+        DataSource(tableView: tableView) { tableView, indexPath, mealCategory in
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MealCategoryTableViewCell", for: indexPath) as! MealCategoryTableViewCell
+            
+            cell.selectionStyle = .gray
+            cell.setup(with: MealCategoryCellViewModel(category: mealCategory))
+            
+            return cell
+        }
     }
     
+    private func reloadTable() {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, MealCategory>()
+        
+        snapshot.appendSections([0])
+        snapshot.appendItems(categories)
+        
+        dataSource.apply(snapshot, animatingDifferences: true)
+    }
+}
+
+extension MealsCategoriesViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        let category = categories[indexPath.row]
-        
-        viewModel.selectCategory(category.title)
+        viewModel.selectCategory(categories[indexPath.row].title)
     }
 }
 
