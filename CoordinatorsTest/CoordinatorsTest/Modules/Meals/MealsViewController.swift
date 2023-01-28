@@ -66,6 +66,13 @@ final class MealsViewController: BaseTableViewController {
         
         viewModel.selectMeal(with: meals[indexPath.row].id)
     }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? MealTableViewCell
+        else { return }
+        
+        cell.cancelPrefetching()
+    }
 }
 
 private extension MealCellViewModel {

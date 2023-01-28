@@ -19,13 +19,16 @@ final class MealTableViewCell: UITableViewCell {
         
         mealImageView.image = nil
         titleLabel.text = ""
-        
-        cancellable?.cancel()
     }
     
     func setup(with viewModel: MealCellViewModel) {
         titleLabel.text = viewModel.title
         cancellable = mealImageView.fetchImage(from: viewModel.imageUrl)
+    }
+    
+    func cancelPrefetching() {
+        cancellable?.cancel()
+        cancellable = nil
     }
 }
 
