@@ -55,7 +55,9 @@ extension Publisher where Output == Data {
                let prettyPrintedData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted),
                let prettyPrintedString = NSString(data: prettyPrintedData, encoding: String.Encoding.utf8.rawValue) {
                 
+                #if DEBUG
                 Swift.print(prettyPrintedString)
+                #endif
             }
             
             return data
