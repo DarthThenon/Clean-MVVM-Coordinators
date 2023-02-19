@@ -85,6 +85,7 @@
 		F9AF742C29A2BE3F00871AED /* StubsCreations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF742B29A2BE3F00871AED /* StubsCreations.swift */; };
 		F9AF742E29A2BF8900871AED /* MealCategoryCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF742D29A2BF8900871AED /* MealCategoryCodableTests.swift */; };
 		F9AF743029A2C19E00871AED /* MealDecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF742F29A2C19E00871AED /* MealDecodableTests.swift */; };
+		F9AF743229A2C2E100871AED /* MealDetailsDecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF743129A2C2E100871AED /* MealDetailsDecodableTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -243,6 +244,7 @@
 		F9AF742B29A2BE3F00871AED /* StubsCreations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubsCreations.swift; sourceTree = "<group>"; };
 		F9AF742D29A2BF8900871AED /* MealCategoryCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCategoryCodableTests.swift; sourceTree = "<group>"; };
 		F9AF742F29A2C19E00871AED /* MealDecodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDecodableTests.swift; sourceTree = "<group>"; };
+		F9AF743129A2C2E100871AED /* MealDetailsDecodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailsDecodableTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -630,6 +632,7 @@
 				F9AF741A29A29C4F00871AED /* NetworkRepositoryTests.swift */,
 				F9AF742D29A2BF8900871AED /* MealCategoryCodableTests.swift */,
 				F9AF742F29A2C19E00871AED /* MealDecodableTests.swift */,
+				F9AF743129A2C2E100871AED /* MealDetailsDecodableTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -944,6 +947,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9AF743029A2C19E00871AED /* MealDecodableTests.swift in Sources */,
+				F9AF743229A2C2E100871AED /* MealDetailsDecodableTests.swift in Sources */,
 				F9AF742329A2B4C000871AED /* StubProvider.swift in Sources */,
 				F9AF741E29A29D0200871AED /* MockURLSession.swift in Sources */,
 				F9AF742A29A2BE0A00871AED /* CreationalFunctions.swift in Sources */,
