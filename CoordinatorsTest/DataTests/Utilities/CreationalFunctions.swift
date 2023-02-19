@@ -28,3 +28,11 @@ func makeMealCategoryCodable() -> MealCategoryCodable {
         strCategoryDescription: "Description"
     )
 }
+
+func makeMealDecodable() -> MealDecodable {
+    MealDecodable(
+        idMeal: UUID().uuidString,
+        strMeal: "Test Meal",
+        strMealThumb: makeGoogleURL().absoluteString
+    )
+}
