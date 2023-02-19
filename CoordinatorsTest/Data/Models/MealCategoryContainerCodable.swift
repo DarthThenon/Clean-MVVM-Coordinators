@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct MealCategoryContainerDecodable: Decodable {
-    let categories: [MealCategoryDecodable]
+struct MealCategoryContainerCodable: Codable, Equatable {
+    let categories: [MealCategoryCodable]
 }

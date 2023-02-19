@@ -13,14 +13,15 @@ public protocol NetworkRepository {
 }
 
 public final class RealNetworkRepository: NetworkRepository {
+    let session: URLSession
     let decoder = JSONDecoder()
     
-    public init() {}
+    public init(session: URLSession = .shared) {
+        self.session = session
+    }
     
     public func executeRequest<R: Decodable>(for url: URL) -> AnyPublisher<R, Error> {
-        let session = URLSession(configuration: .default)
-        
-        return session.dataTaskPublisher(for: url)
+        session.dataTaskPublisher(for: url)
             .retry(1)
             .map { $0.data }
             .printPrettyJSON()

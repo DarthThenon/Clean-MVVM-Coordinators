@@ -18,7 +18,7 @@ public final class MealsRepositoryImpl: MealCategoriesRepository {
     
     public func getCategories() -> AnyPublisher<[MealCategory], Error> {
         let url = URL(string: "https://themealdb.com/api/json/v1/1/categories.php")!
-        let requestPublisher: AnyPublisher<MealCategoryContainerDecodable, Error> = networkRepository.executeRequest(for: url)
+        let requestPublisher: AnyPublisher<MealCategoryContainerCodable, Error> = networkRepository.executeRequest(for: url)
          
         return requestPublisher
             .map { $0.categories.map { $0.toDomainModel() } }
@@ -45,14 +45,5 @@ extension MealsRepositoryImpl: MealDetailsRepository {
         return requestPublisher
             .map { $0.meals.map { $0.toDomainModel() }.first! }
             .eraseToAnyPublisher()
-    }
-}
-
-private extension MealCategoryDecodable {
-    func toDomainModel() -> MealCategory {
-        MealCategory.init(id: idCategory,
-                          title: strCategory,
-                          description: strCategoryDescription,
-                          imageURL: strCategoryThumb.flatMap(URL.init))
     }
 }
