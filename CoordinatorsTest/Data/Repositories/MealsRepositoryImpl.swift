@@ -9,13 +9,15 @@ import Foundation
 import Domain
 import Combine
 
-public final class MealsRepositoryImpl: MealCategoriesRepository {
+public final class MealsRepositoryImpl {
     let networkRepository: NetworkRepository
     
     public init(networkRepository: NetworkRepository) {
         self.networkRepository = networkRepository
     }
-    
+}
+
+extension MealsRepositoryImpl: MealCategoriesRepository {
     public func getCategories() -> AnyPublisher<[MealCategory], Error> {
         let url = URL(string: "https://themealdb.com/api/json/v1/1/categories.php")!
         let requestPublisher: AnyPublisher<MealCategoryContainerCodable, Error> = networkRepository.executeRequest(for: url)
