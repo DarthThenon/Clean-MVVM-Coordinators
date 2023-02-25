@@ -19,6 +19,7 @@ protocol MealsCategoriesViewModelProtocol {
 final class MealsCategoriesViewModel: MealsCategoriesViewModelProtocol, MealsCategoriesOutput {
     private let categoriesSubject: CurrentValueSubject<[MealCategory], Never> = .init([])
     private let getMealsCategoriesUseCase: GetMealCategoriesUseCase
+    private let getMealCategoriesBySearchQueryUseCase: GetMealCategoriesBySearchQueryUseCaseProtocol
     private var cancellable: AnyCancellable?
     
     var onFinish: (() -> Void)?
@@ -27,8 +28,10 @@ final class MealsCategoriesViewModel: MealsCategoriesViewModelProtocol, MealsCat
         categoriesSubject.eraseToAnyPublisher()
     }
     
-    init(getMealsCategoriesUseCase: GetMealCategoriesUseCase) {
+    init(getMealsCategoriesUseCase: GetMealCategoriesUseCase,
+         getMealCategoriesBySearchQueryUseCase: GetMealCategoriesBySearchQueryUseCaseProtocol) {
         self.getMealsCategoriesUseCase = getMealsCategoriesUseCase
+        self.getMealCategoriesBySearchQueryUseCase = getMealCategoriesBySearchQueryUseCase
     }
     
     func viewDidLoad() {

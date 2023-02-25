@@ -71,6 +71,8 @@
 		F934A2FC29AABF06004D6BC1 /* MealEntity + toDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934A2FB29AABF06004D6BC1 /* MealEntity + toDomain.swift */; };
 		F934A2FE29AABF6C004D6BC1 /* Meal + toEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934A2FD29AABF6C004D6BC1 /* Meal + toEntity.swift */; };
 		F934A30129AAC032004D6BC1 /* EntityMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934A30029AAC032004D6BC1 /* EntityMappable.swift */; };
+		F934A30429AACA88004D6BC1 /* NetworkRepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934A30329AACA88004D6BC1 /* NetworkRepositoryError.swift */; };
+		F934A30629AACCEF004D6BC1 /* GetMealCategoriesBySearchQueryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934A30529AACCEF004D6BC1 /* GetMealCategoriesBySearchQueryUseCase.swift */; };
 		F943A5E62860FAF3001D3660 /* DimmingTransitionPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943A5E52860FAF3001D3660 /* DimmingTransitionPresentationController.swift */; };
 		F943A5E82860FD5A001D3660 /* ViewControllerTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943A5E72860FD5A001D3660 /* ViewControllerTransitionAnimator.swift */; };
 		F943A5EA2860FF41001D3660 /* ViewControllerTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943A5E92860FF41001D3660 /* ViewControllerTransitionAnimation.swift */; };
@@ -254,6 +256,8 @@
 		F934A2FB29AABF06004D6BC1 /* MealEntity + toDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MealEntity + toDomain.swift"; sourceTree = "<group>"; };
 		F934A2FD29AABF6C004D6BC1 /* Meal + toEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meal + toEntity.swift"; sourceTree = "<group>"; };
 		F934A30029AAC032004D6BC1 /* EntityMappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityMappable.swift; sourceTree = "<group>"; };
+		F934A30329AACA88004D6BC1 /* NetworkRepositoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepositoryError.swift; sourceTree = "<group>"; };
+		F934A30529AACCEF004D6BC1 /* GetMealCategoriesBySearchQueryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMealCategoriesBySearchQueryUseCase.swift; sourceTree = "<group>"; };
 		F943A5E52860FAF3001D3660 /* DimmingTransitionPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimmingTransitionPresentationController.swift; sourceTree = "<group>"; };
 		F943A5E72860FD5A001D3660 /* ViewControllerTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTransitionAnimator.swift; sourceTree = "<group>"; };
 		F943A5E92860FF41001D3660 /* ViewControllerTransitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTransitionAnimation.swift; sourceTree = "<group>"; };
@@ -397,6 +401,7 @@
 		F61A64F827AC08FE00348CB9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F934A30229AACA72004D6BC1 /* Errors */,
 				F934A2FF29AAC021004D6BC1 /* Protocols */,
 				F9F9708029AA9D3A000EEF98 /* DatabaseModel */,
 				F9F9707F29AA9CF8000EEF98 /* ServerCodableModels */,
@@ -527,6 +532,7 @@
 				F61A64CB27AC012A00348CB9 /* GetMealCategoriesUseCase.swift */,
 				F61A652327AC48DC00348CB9 /* GetMealByCategoryUseCase.swift */,
 				F90B818D27AC7D760055AB9C /* GetMealDetailsByIdUseCase.swift */,
+				F934A30529AACCEF004D6BC1 /* GetMealCategoriesBySearchQueryUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -621,6 +627,14 @@
 				F934A30029AAC032004D6BC1 /* EntityMappable.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		F934A30229AACA72004D6BC1 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				F934A30329AACA88004D6BC1 /* NetworkRepositoryError.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 		F943A5E42860F897001D3660 /* VCPresentation */ = {
@@ -1007,6 +1021,7 @@
 				F61A64CA27AC00C300348CB9 /* RecipesRepository.swift in Sources */,
 				F61A64D127AC01B900348CB9 /* MealCategoriesRepository.swift in Sources */,
 				F61A64CE27AC014F00348CB9 /* MealCategory.swift in Sources */,
+				F934A30629AACCEF004D6BC1 /* GetMealCategoriesBySearchQueryUseCase.swift in Sources */,
 				F90B818C27AC7C160055AB9C /* MealIngredient.swift in Sources */,
 				F90B818827AC7B210055AB9C /* MealDetailsRepository.swift in Sources */,
 				F61A652427AC48DC00348CB9 /* GetMealByCategoryUseCase.swift in Sources */,
@@ -1041,6 +1056,7 @@
 				F9F9708A29AAA429000EEF98 /* MealCategoryEntity + toDomain.swift in Sources */,
 				F61A64FA27AC090C00348CB9 /* MealCategoryCodable.swift in Sources */,
 				F934A2FE29AABF6C004D6BC1 /* Meal + toEntity.swift in Sources */,
+				F934A30429AACA88004D6BC1 /* NetworkRepositoryError.swift in Sources */,
 				F934A30129AAC032004D6BC1 /* EntityMappable.swift in Sources */,
 				F61A652A27AC570800348CB9 /* MealsContainerDecodable.swift in Sources */,
 				F9F9708E29AAB24D000EEF98 /* MealCategory + toEntity.swift in Sources */,

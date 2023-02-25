@@ -28,9 +28,15 @@ final class AppDependencyContainer {
         let getMealCategoriesUseCase = GetMealCategoriesUseCaseImp(mealCategoriesRepository: mealsRepository)
         let getMealsByCategoryUseCase = GetMealsByCategoryUseCaseImp(mealsByCategoryRepository: mealsRepository)
         let getMealDetailsByIdUseCase = GetMealDetailsByIdUseCaseImp(repository: networkMealsRepository)
+        let getMealCategoriesBySearchQueryUseCase = GetMealCategoriesBySearchQueryUseCase(
+            mealCategoriesRepository: mealsRepository
+        )
         
-        return MealDependencyContainer(getMealsCategoriesUseCase: getMealCategoriesUseCase,
-                                       getMealsByCategoryUseCase: getMealsByCategoryUseCase,
-                                       getMealDetailsByIdUseCase: getMealDetailsByIdUseCase)
+        return MealDependencyContainer(
+            getMealsCategoriesUseCase: getMealCategoriesUseCase,
+            getMealsByCategoryUseCase: getMealsByCategoryUseCase,
+            getMealDetailsByIdUseCase: getMealDetailsByIdUseCase,
+            getMealCategoriesBySearchQueryUseCase: getMealCategoriesBySearchQueryUseCase
+        )
     }
 }

@@ -12,17 +12,23 @@ struct MealDependencyContainer {
     private let getMealsCategoriesUseCase: GetMealCategoriesUseCase
     private let getMealsByCategoryUseCase: GetMealsByCategoryUseCase
     private let getMealDetailsByIdUseCase: GetMealDetailsByIdUseCase
+    private let getMealCategoriesBySearchQueryUseCase: GetMealCategoriesBySearchQueryUseCaseProtocol
     
     init(getMealsCategoriesUseCase: GetMealCategoriesUseCase,
          getMealsByCategoryUseCase: GetMealsByCategoryUseCase,
-         getMealDetailsByIdUseCase: GetMealDetailsByIdUseCase) {
+         getMealDetailsByIdUseCase: GetMealDetailsByIdUseCase,
+         getMealCategoriesBySearchQueryUseCase: GetMealCategoriesBySearchQueryUseCaseProtocol) {
         self.getMealsCategoriesUseCase = getMealsCategoriesUseCase
         self.getMealsByCategoryUseCase = getMealsByCategoryUseCase
         self.getMealDetailsByIdUseCase = getMealDetailsByIdUseCase
+        self.getMealCategoriesBySearchQueryUseCase = getMealCategoriesBySearchQueryUseCase
     }
     
     func createMealsCoordinator() -> MealsCoordinator {
-        let categoriesAssembler = MealsCategoriesAssembler(getMealsCategoriesUseCase: getMealsCategoriesUseCase)
+        let categoriesAssembler = MealsCategoriesAssembler(
+            getMealsCategoriesUseCase: getMealsCategoriesUseCase,
+            getMealCategoriesBySearchQueryUseCase: getMealCategoriesBySearchQueryUseCase
+        )
         let mealsAssember = MealsAssembler(getMealsByCategoryUseCase: getMealsByCategoryUseCase)
         let coordinator = MealsCoordinator(
             navigationController: .init(),

@@ -20,6 +20,11 @@ public final class CompositeMealsRepository {
 }
 
 extension CompositeMealsRepository: MealCategoriesRepository {
+    public var isSearchCategoriesByTitleEnabled: Bool {
+        localRepository.isSearchCategoriesByTitleEnabled
+        || networkRepository.isSearchCategoriesByTitleEnabled
+    }
+    
     public func getCategories() -> AnyPublisher<[MealCategory], Error> {
         let localPublisher = localRepository.getCategories()
         let networkPublisher = networkRepository.getCategories()
@@ -32,6 +37,10 @@ extension CompositeMealsRepository: MealCategoriesRepository {
             .prefix(untilOutputFrom: networkPublisher)
             .merge(with: networkPublisher)
             .eraseToAnyPublisher()
+    }
+    
+    public func getCategories(byTitle title: String) -> AnyPublisher<[MealCategory], Error> {
+        localRepository.getCategories(byTitle: title)
     }
 }
 

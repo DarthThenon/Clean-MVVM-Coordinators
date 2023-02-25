@@ -14,13 +14,19 @@ protocol MealsCategoriesAssembable {
 
 final class MealsCategoriesAssembler: MealsCategoriesAssembable {
     private let getMealsCategoriesUseCase: GetMealCategoriesUseCase
+    private let getMealCategoriesBySearchQueryUseCase: GetMealCategoriesBySearchQueryUseCaseProtocol
     
-    init(getMealsCategoriesUseCase: GetMealCategoriesUseCase) {
+    init(getMealsCategoriesUseCase: GetMealCategoriesUseCase,
+         getMealCategoriesBySearchQueryUseCase: GetMealCategoriesBySearchQueryUseCaseProtocol) {
         self.getMealsCategoriesUseCase = getMealsCategoriesUseCase
+        self.getMealCategoriesBySearchQueryUseCase = getMealCategoriesBySearchQueryUseCase
     }
     
     func assemble() -> (UIViewController, MealsCategoriesOutput) {
-        let viewModel = MealsCategoriesViewModel(getMealsCategoriesUseCase: getMealsCategoriesUseCase)
+        let viewModel = MealsCategoriesViewModel(
+            getMealsCategoriesUseCase: getMealsCategoriesUseCase,
+            getMealCategoriesBySearchQueryUseCase: getMealCategoriesBySearchQueryUseCase
+        )
         let viewController = MealsCategoriesViewController(viewModel: viewModel)
         
         return (viewController, viewModel)

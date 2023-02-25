@@ -18,6 +18,10 @@ public final class NetworkMealsRepository {
 }
 
 extension NetworkMealsRepository: MealCategoriesRepository {
+    public var isSearchCategoriesByTitleEnabled: Bool {
+        false
+    }
+    
     public func getCategories() -> AnyPublisher<[MealCategory], Error> {
         let url = URL(string: "https://themealdb.com/api/json/v1/1/categories.php")!
         let requestPublisher: AnyPublisher<MealCategoryContainerCodable, Error> = networkRepository.executeRequest(for: url)
@@ -30,6 +34,11 @@ extension NetworkMealsRepository: MealCategoriesRepository {
                 
                 return mealCategories
             }
+            .eraseToAnyPublisher()
+    }
+    
+    public func getCategories(byTitle title: String) -> AnyPublisher<[MealCategory], Error> {
+        Fail(error: NetworkRepositoryError.searchIsNotAvailable)
             .eraseToAnyPublisher()
     }
 }

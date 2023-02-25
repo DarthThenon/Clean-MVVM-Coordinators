@@ -28,12 +28,25 @@ public final class LocalMealsRepository {
 }
 
 extension LocalMealsRepository: MealCategoriesRepository {
+    public var isSearchCategoriesByTitleEnabled: Bool {
+        true
+    }
+    
     public func getCategories() -> AnyPublisher<[MealCategory], Error> {
+        getCategories(with: nil)
+    }
+    
+    public func getCategories(byTitle title: String) -> AnyPublisher<[MealCategory], Error> {
+        getCategories(with: NSPredicate(format: "title ==[c] %@", title))
+    }
+    
+    private func getCategories(with predicate: NSPredicate?) -> AnyPublisher<[MealCategory], Error> {
         Future { [weak self] promise in
             self?.databaseService.readInBackground { context in
                 let request = MealCategoryEntity.fetchRequest()
                 let sortDescriptor = NSSortDescriptor(keyPath: \MealCategoryEntity.title, ascending: true)
                 
+                request.predicate = predicate
                 request.sortDescriptors = [sortDescriptor]
                 
                 do {
