@@ -21,7 +21,7 @@
 		F61A64EC27AC02F100348CB9 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F61A64D927AC02F100348CB9 /* Data.framework */; };
 		F61A64ED27AC02F100348CB9 /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F61A64D927AC02F100348CB9 /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F61A64F527AC030F00348CB9 /* NetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A64F427AC030F00348CB9 /* NetworkRepository.swift */; };
-		F61A64F727AC07E800348CB9 /* MealsRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A64F627AC07E800348CB9 /* MealsRepositoryImpl.swift */; };
+		F61A64F727AC07E800348CB9 /* NetworkMealsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A64F627AC07E800348CB9 /* NetworkMealsRepository.swift */; };
 		F61A64FA27AC090C00348CB9 /* MealCategoryCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A64F927AC090C00348CB9 /* MealCategoryCodable.swift */; };
 		F61A64FC27AC095F00348CB9 /* MealCategoryContainerCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A64FB27AC095F00348CB9 /* MealCategoryContainerCodable.swift */; };
 		F61A650227AC0FDB00348CB9 /* MealsCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61A650127AC0FDA00348CB9 /* MealsCategoriesViewController.swift */; };
@@ -201,7 +201,7 @@
 		F61A64DB27AC02F100348CB9 /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
 		F61A64E027AC02F100348CB9 /* DataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F61A64F427AC030F00348CB9 /* NetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRepository.swift; sourceTree = "<group>"; };
-		F61A64F627AC07E800348CB9 /* MealsRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsRepositoryImpl.swift; sourceTree = "<group>"; };
+		F61A64F627AC07E800348CB9 /* NetworkMealsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMealsRepository.swift; sourceTree = "<group>"; };
 		F61A64F927AC090C00348CB9 /* MealCategoryCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCategoryCodable.swift; sourceTree = "<group>"; };
 		F61A64FB27AC095F00348CB9 /* MealCategoryContainerCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCategoryContainerCodable.swift; sourceTree = "<group>"; };
 		F61A650127AC0FDA00348CB9 /* MealsCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsCategoriesViewController.swift; sourceTree = "<group>"; };
@@ -703,7 +703,7 @@
 			isa = PBXGroup;
 			children = (
 				F61A64F427AC030F00348CB9 /* NetworkRepository.swift */,
-				F61A64F627AC07E800348CB9 /* MealsRepositoryImpl.swift */,
+				F61A64F627AC07E800348CB9 /* NetworkMealsRepository.swift */,
 			);
 			path = NetworkRepositories;
 			sourceTree = "<group>";
@@ -1024,7 +1024,7 @@
 				F61A64FA27AC090C00348CB9 /* MealCategoryCodable.swift in Sources */,
 				F61A652A27AC570800348CB9 /* MealsContainerDecodable.swift in Sources */,
 				F9F9708E29AAB24D000EEF98 /* MealCategory + toEntity.swift in Sources */,
-				F61A64F727AC07E800348CB9 /* MealsRepositoryImpl.swift in Sources */,
+				F61A64F727AC07E800348CB9 /* NetworkMealsRepository.swift in Sources */,
 				F61A64FC27AC095F00348CB9 /* MealCategoryContainerCodable.swift in Sources */,
 				F61A64F527AC030F00348CB9 /* NetworkRepository.swift in Sources */,
 			);

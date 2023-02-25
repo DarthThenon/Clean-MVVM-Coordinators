@@ -18,7 +18,7 @@ private extension MealsRepositoryTests {
     typealias MealCategoryRepository = MockNetworkRepository<MealCategoryContainerCodable>
     
     func makeCategoriesSut(file: StaticString = #file,
-                           line: UInt = #line) -> (MealsRepositoryImpl, MealCategoryRepository) {
+                           line: UInt = #line) -> (NetworkMealsRepository, MealCategoryRepository) {
         
         let repository = MealCategoryRepository()
         let sut = makeSut(networkRepository: repository)
@@ -28,9 +28,9 @@ private extension MealsRepositoryTests {
     
     func makeSut<T: Decodable>(networkRepository: MockNetworkRepository<T>,
                                file: StaticString = #file,
-                               line: UInt = #line) -> MealsRepositoryImpl {
+                               line: UInt = #line) -> NetworkMealsRepository {
         
-        let sut = MealsRepositoryImpl(networkRepository: networkRepository)
+        let sut = NetworkMealsRepository(networkRepository: networkRepository)
         
         deallocationCheck(sut, file: file, line: line)
         

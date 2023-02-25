@@ -19,7 +19,7 @@ final class AppDependencyContainer {
     }
     
     func createMealDependencyContainer() -> MealDependencyContainer {
-        let networkMealsRepository = MealsRepositoryImpl(networkRepository: networkRepository)
+        let networkMealsRepository = NetworkMealsRepository(networkRepository: networkRepository)
         let localMealsRepository = LocalMealsRepository(databaseService: databaseService)
         let mealsRepository = CompositeMealsRepository(
             localRepository: localMealsRepository,

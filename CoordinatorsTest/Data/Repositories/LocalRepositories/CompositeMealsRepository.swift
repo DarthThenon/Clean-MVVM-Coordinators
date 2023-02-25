@@ -11,9 +11,9 @@ import Domain
 
 public final class CompositeMealsRepository {
     private let localRepository: LocalMealsRepository
-    private let networkRepository: MealsRepositoryImpl
+    private let networkRepository: NetworkMealsRepository
     
-    public init(localRepository: LocalMealsRepository, networkRepository: MealsRepositoryImpl) {
+    public init(localRepository: LocalMealsRepository, networkRepository: NetworkMealsRepository) {
         self.localRepository = localRepository
         self.networkRepository = networkRepository
     }

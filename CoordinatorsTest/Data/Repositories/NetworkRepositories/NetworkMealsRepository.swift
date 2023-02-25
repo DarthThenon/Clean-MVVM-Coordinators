@@ -1,5 +1,5 @@
 //
-//  MealsRepositoryImpl.swift
+//  NetworkMealsRepository.swift
 //  Data
 //
 //  Created by Dmytro Yurchenko on 03.02.2022.
@@ -9,7 +9,7 @@ import Foundation
 import Domain
 import Combine
 
-public final class MealsRepositoryImpl {
+public final class NetworkMealsRepository {
     let networkRepository: NetworkRepository
     
     public init(networkRepository: NetworkRepository) {
@@ -17,7 +17,7 @@ public final class MealsRepositoryImpl {
     }
 }
 
-extension MealsRepositoryImpl: MealCategoriesRepository {
+extension NetworkMealsRepository: MealCategoriesRepository {
     public func getCategories() -> AnyPublisher<[MealCategory], Error> {
         let url = URL(string: "https://themealdb.com/api/json/v1/1/categories.php")!
         let requestPublisher: AnyPublisher<MealCategoryContainerCodable, Error> = networkRepository.executeRequest(for: url)
@@ -34,7 +34,7 @@ extension MealsRepositoryImpl: MealCategoriesRepository {
     }
 }
 
-extension MealsRepositoryImpl: MealsByCategoryRepository {
+extension NetworkMealsRepository: MealsByCategoryRepository {
     public func getMeals(by category: String) -> AnyPublisher<[Meal], Error> {
         let url = URL(string: "https://themealdb.com/api/json/v1/1/filter.php?c=\(category)")!
         let requestPublisher: AnyPublisher<MealsContainerDecodable, Error> = networkRepository.executeRequest(for: url)
@@ -45,7 +45,7 @@ extension MealsRepositoryImpl: MealsByCategoryRepository {
     }
 }
 
-extension MealsRepositoryImpl: MealDetailsRepository {
+extension NetworkMealsRepository: MealDetailsRepository {
     public func getMealDetails(by id: String) -> AnyPublisher<MealDetails, Error> {
         let url = URL(string: "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(id)")!
         let requestPublisher: AnyPublisher<MealDetailsContainerDecodable, Error> = networkRepository.executeRequest(for: url)
