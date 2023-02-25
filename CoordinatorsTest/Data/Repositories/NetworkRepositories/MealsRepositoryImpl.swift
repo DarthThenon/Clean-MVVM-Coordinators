@@ -23,7 +23,13 @@ extension MealsRepositoryImpl: MealCategoriesRepository {
         let requestPublisher: AnyPublisher<MealCategoryContainerCodable, Error> = networkRepository.executeRequest(for: url)
          
         return requestPublisher
-            .map { $0.categories.map { $0.toDomainModel() } }
+            .map {
+                let mealCategories = $0.categories.map { $0.toDomainModel() }
+                
+                print("❇️ Fetched \(mealCategories.count) meal categories from the server")
+                
+                return mealCategories
+            }
             .eraseToAnyPublisher()
     }
 }
