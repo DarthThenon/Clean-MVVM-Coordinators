@@ -8,7 +8,13 @@
 import Foundation
 import CoreData
 
-final class DataBaseService {
+protocol DatabaseServiceProtocol: AnyObject {
+    func write(_ block: @escaping (NSManagedObjectContext) -> Void)
+    func readInBackground(_ block: @escaping (NSManagedObjectContext) -> Void)
+    func batchDelete(fetchRequest: NSFetchRequest<NSFetchRequestResult>)
+}
+
+final class DatabaseService: DatabaseServiceProtocol {
     private(set) lazy var uiMoc: NSManagedObjectContext = makeUIMoc()
     private lazy var writeMoc: NSManagedObjectContext = makeWriteMoc()
     private lazy var workMoc: NSManagedObjectContext = makeWorkMoc()
@@ -87,7 +93,7 @@ final class DataBaseService {
     }
 }
 
-private extension DataBaseService {
+private extension DatabaseService {
     func makeUIMoc() -> NSManagedObjectContext {
         makeMoc(concurrencyType: .mainQueueConcurrencyType, parent: writeMoc)
     }
