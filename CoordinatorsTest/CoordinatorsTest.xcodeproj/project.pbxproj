@@ -92,7 +92,7 @@
 		F9AF743629A2CFA800871AED /* MockNetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF743529A2CFA800871AED /* MockNetworkRepository.swift */; };
 		F9F9707A29AA988F000EEF98 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F9707929AA988F000EEF98 /* BaseViewController.swift */; };
 		F9F9707C29AA98CC000EEF98 /* UIViewController + CustomDeinitPrinting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F9707B29AA98CC000EEF98 /* UIViewController + CustomDeinitPrinting.swift */; };
-		F9F9707E29AA9B95000EEF98 /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F9707D29AA9B95000EEF98 /* DBService.swift */; };
+		F9F9707E29AA9B95000EEF98 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F9707D29AA9B95000EEF98 /* DatabaseService.swift */; };
 		F9F9708329AA9D7C000EEF98 /* Meals.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F9F9708129AA9D7C000EEF98 /* Meals.xcdatamodeld */; };
 		F9F9708729AAA11C000EEF98 /* LocalMealsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F9708629AAA11C000EEF98 /* LocalMealsRepository.swift */; };
 		F9F9708A29AAA429000EEF98 /* MealCategoryEntity + toDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F9708929AAA429000EEF98 /* MealCategoryEntity + toDomain.swift */; };
@@ -269,7 +269,7 @@
 		F9AF743529A2CFA800871AED /* MockNetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkRepository.swift; sourceTree = "<group>"; };
 		F9F9707929AA988F000EEF98 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F9F9707B29AA98CC000EEF98 /* UIViewController + CustomDeinitPrinting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + CustomDeinitPrinting.swift"; sourceTree = "<group>"; };
-		F9F9707D29AA9B95000EEF98 /* DBService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
+		F9F9707D29AA9B95000EEF98 /* DatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		F9F9708229AA9D7C000EEF98 /* Meals.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Meals.xcdatamodel; sourceTree = "<group>"; };
 		F9F9708629AAA11C000EEF98 /* LocalMealsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMealsRepository.swift; sourceTree = "<group>"; };
 		F9F9708929AAA429000EEF98 /* MealCategoryEntity + toDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MealCategoryEntity + toDomain.swift"; sourceTree = "<group>"; };
@@ -711,7 +711,7 @@
 		F9F9708529AAA068000EEF98 /* LocalRepositories */ = {
 			isa = PBXGroup;
 			children = (
-				F9F9707D29AA9B95000EEF98 /* DBService.swift */,
+				F9F9707D29AA9B95000EEF98 /* DatabaseService.swift */,
 				F9F9708629AAA11C000EEF98 /* LocalMealsRepository.swift */,
 				F9F9708B29AAA7C7000EEF98 /* CompositeMealsRepository.swift */,
 			);
@@ -1016,7 +1016,7 @@
 				F9F9708C29AAA7C7000EEF98 /* CompositeMealsRepository.swift in Sources */,
 				F61A652827AC4B7E00348CB9 /* MealDecodable.swift in Sources */,
 				F90B819227AC82170055AB9C /* MealDetailsContainerDecodable.swift in Sources */,
-				F9F9707E29AA9B95000EEF98 /* DBService.swift in Sources */,
+				F9F9707E29AA9B95000EEF98 /* DatabaseService.swift in Sources */,
 				F9F9708729AAA11C000EEF98 /* LocalMealsRepository.swift in Sources */,
 				F90B819027AC7E220055AB9C /* MealDetailsDecodable.swift in Sources */,
 				F9F9708329AA9D7C000EEF98 /* Meals.xcdatamodeld in Sources */,
