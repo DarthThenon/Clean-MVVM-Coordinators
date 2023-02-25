@@ -9,30 +9,45 @@ import Foundation
 import Domain
 import Combine
 
-final class LocalMealsRepository {
+public final class LocalMealsRepository {
     private let databaseService: DatabaseServiceProtocol
     
-    init(databaseService: DatabaseServiceProtocol) {
+    public init(databaseService: DatabaseServiceProtocol) {
         self.databaseService = databaseService
     }
 }
 
 extension LocalMealsRepository: MealCategoriesRepository {
-    func getCategories() -> AnyPublisher<[MealCategory], Error> {
+    public func getCategories() -> AnyPublisher<[MealCategory], Error> {
         Future { [weak self] promise in
             self?.databaseService.readInBackground { context in
                 let request = MealCategoryEntity.fetchRequest()
-                let sortDescriptor = NSSortDescriptor(keyPath: \MealCategoryEntity.title, ascending: false)
+                let sortDescriptor = NSSortDescriptor(keyPath: \MealCategoryEntity.title, ascending: true)
+                
+                request.sortDescriptors = [sortDescriptor]
                 
                 do {
                     let result = try context.fetch(request)
+                    let mealCategories = result.compactMap { $0.toDomainModel() }
                     
-                    promise(.success(result.compactMap { $0.toDomainModel() }))
+                    promise(.success(mealCategories))
+                    
+                    print("❇️ Fetched \(mealCategories.count) meal categories from the database")
                 } catch {
                     promise(.failure(error))
                 }
             }
         }
         .eraseToAnyPublisher()
+    }
+    
+    func save(categories: [MealCategory]) {
+        databaseService.write { moc in
+            let entities = categories.map {
+                $0.toEntity(inMoc: moc)
+            }
+            
+            print("❇️ Saved \(entities.count) meal category entities to the database")
+        }
     }
 }
