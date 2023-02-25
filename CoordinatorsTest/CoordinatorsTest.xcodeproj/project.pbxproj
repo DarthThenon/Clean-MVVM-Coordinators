@@ -68,6 +68,9 @@
 		F90D45532985444600703CB4 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F61A64A927AC000700348CB9 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F90D4559298549E600703CB4 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90D4558298549E600703CB4 /* ViewModel.swift */; };
 		F90D455B29854BD000703CB4 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90D455A29854BD000703CB4 /* BaseTableViewController.swift */; };
+		F934A2FC29AABF06004D6BC1 /* MealEntity + toDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934A2FB29AABF06004D6BC1 /* MealEntity + toDomain.swift */; };
+		F934A2FE29AABF6C004D6BC1 /* Meal + toEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934A2FD29AABF6C004D6BC1 /* Meal + toEntity.swift */; };
+		F934A30129AAC032004D6BC1 /* EntityMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934A30029AAC032004D6BC1 /* EntityMappable.swift */; };
 		F943A5E62860FAF3001D3660 /* DimmingTransitionPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943A5E52860FAF3001D3660 /* DimmingTransitionPresentationController.swift */; };
 		F943A5E82860FD5A001D3660 /* ViewControllerTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943A5E72860FD5A001D3660 /* ViewControllerTransitionAnimator.swift */; };
 		F943A5EA2860FF41001D3660 /* ViewControllerTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F943A5E92860FF41001D3660 /* ViewControllerTransitionAnimation.swift */; };
@@ -248,6 +251,9 @@
 		F90B819E27AC86840055AB9C /* MealDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailsCoordinator.swift; sourceTree = "<group>"; };
 		F90D4558298549E600703CB4 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		F90D455A29854BD000703CB4 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		F934A2FB29AABF06004D6BC1 /* MealEntity + toDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MealEntity + toDomain.swift"; sourceTree = "<group>"; };
+		F934A2FD29AABF6C004D6BC1 /* Meal + toEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meal + toEntity.swift"; sourceTree = "<group>"; };
+		F934A30029AAC032004D6BC1 /* EntityMappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityMappable.swift; sourceTree = "<group>"; };
 		F943A5E52860FAF3001D3660 /* DimmingTransitionPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimmingTransitionPresentationController.swift; sourceTree = "<group>"; };
 		F943A5E72860FD5A001D3660 /* ViewControllerTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTransitionAnimator.swift; sourceTree = "<group>"; };
 		F943A5E92860FF41001D3660 /* ViewControllerTransitionAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTransitionAnimation.swift; sourceTree = "<group>"; };
@@ -391,6 +397,7 @@
 		F61A64F827AC08FE00348CB9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F934A2FF29AAC021004D6BC1 /* Protocols */,
 				F9F9708029AA9D3A000EEF98 /* DatabaseModel */,
 				F9F9707F29AA9CF8000EEF98 /* ServerCodableModels */,
 			);
@@ -608,6 +615,14 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		F934A2FF29AAC021004D6BC1 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F934A30029AAC032004D6BC1 /* EntityMappable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		F943A5E42860F897001D3660 /* VCPresentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -723,6 +738,8 @@
 			children = (
 				F9F9708929AAA429000EEF98 /* MealCategoryEntity + toDomain.swift */,
 				F9F9708D29AAB24D000EEF98 /* MealCategory + toEntity.swift */,
+				F934A2FB29AABF06004D6BC1 /* MealEntity + toDomain.swift */,
+				F934A2FD29AABF6C004D6BC1 /* Meal + toEntity.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1018,10 +1035,13 @@
 				F90B819227AC82170055AB9C /* MealDetailsContainerDecodable.swift in Sources */,
 				F9F9707E29AA9B95000EEF98 /* DatabaseService.swift in Sources */,
 				F9F9708729AAA11C000EEF98 /* LocalMealsRepository.swift in Sources */,
+				F934A2FC29AABF06004D6BC1 /* MealEntity + toDomain.swift in Sources */,
 				F90B819027AC7E220055AB9C /* MealDetailsDecodable.swift in Sources */,
 				F9F9708329AA9D7C000EEF98 /* Meals.xcdatamodeld in Sources */,
 				F9F9708A29AAA429000EEF98 /* MealCategoryEntity + toDomain.swift in Sources */,
 				F61A64FA27AC090C00348CB9 /* MealCategoryCodable.swift in Sources */,
+				F934A2FE29AABF6C004D6BC1 /* Meal + toEntity.swift in Sources */,
+				F934A30129AAC032004D6BC1 /* EntityMappable.swift in Sources */,
 				F61A652A27AC570800348CB9 /* MealsContainerDecodable.swift in Sources */,
 				F9F9708E29AAB24D000EEF98 /* MealCategory + toEntity.swift in Sources */,
 				F61A64F727AC07E800348CB9 /* NetworkMealsRepository.swift in Sources */,
