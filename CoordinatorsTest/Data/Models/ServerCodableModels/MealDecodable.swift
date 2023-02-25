@@ -14,19 +14,10 @@ struct MealDecodable: Decodable {
 }
 
 extension MealDecodable {
-    func toDomainModel() -> Meal {
+    func toDomainModel(category: String) -> Meal {
         Meal.init(id: idMeal,
+                  category: category,
                   imageURL: strMealThumb.flatMap(URL.init),
                   title: strMeal)
-    }
-    
-    func toEntity() -> MealEntity {
-        let entity = MealEntity()
-        
-        entity.id = idMeal
-        entity.title = strMeal
-        entity.imageUrlString = strMealThumb
-        
-        return entity
     }
 }
