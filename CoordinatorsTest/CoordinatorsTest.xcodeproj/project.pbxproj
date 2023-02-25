@@ -93,6 +93,7 @@
 		F9F9707A29AA988F000EEF98 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F9707929AA988F000EEF98 /* BaseViewController.swift */; };
 		F9F9707C29AA98CC000EEF98 /* UIViewController + CustomDeinitPrinting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F9707B29AA98CC000EEF98 /* UIViewController + CustomDeinitPrinting.swift */; };
 		F9F9707E29AA9B95000EEF98 /* DataBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F9707D29AA9B95000EEF98 /* DataBaseService.swift */; };
+		F9F9708329AA9D7C000EEF98 /* Meals.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F9F9708129AA9D7C000EEF98 /* Meals.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -265,6 +266,7 @@
 		F9F9707929AA988F000EEF98 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F9F9707B29AA98CC000EEF98 /* UIViewController + CustomDeinitPrinting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + CustomDeinitPrinting.swift"; sourceTree = "<group>"; };
 		F9F9707D29AA9B95000EEF98 /* DataBaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseService.swift; sourceTree = "<group>"; };
+		F9F9708229AA9D7C000EEF98 /* Meals.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Meals.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -381,6 +383,7 @@
 		F61A64F827AC08FE00348CB9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F9F9708029AA9D3A000EEF98 /* DatabaseModel */,
 				F9F9707F29AA9CF8000EEF98 /* ServerCodableModels */,
 			);
 			path = Models;
@@ -680,6 +683,14 @@
 			path = ServerCodableModels;
 			sourceTree = "<group>";
 		};
+		F9F9708029AA9D3A000EEF98 /* DatabaseModel */ = {
+			isa = PBXGroup;
+			children = (
+				F9F9708129AA9D7C000EEF98 /* Meals.xcdatamodeld */,
+			);
+			path = DatabaseModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -970,6 +981,7 @@
 				F90B819227AC82170055AB9C /* MealDetailsContainerDecodable.swift in Sources */,
 				F9F9707E29AA9B95000EEF98 /* DataBaseService.swift in Sources */,
 				F90B819027AC7E220055AB9C /* MealDetailsDecodable.swift in Sources */,
+				F9F9708329AA9D7C000EEF98 /* Meals.xcdatamodeld in Sources */,
 				F61A64FA27AC090C00348CB9 /* MealCategoryCodable.swift in Sources */,
 				F61A652A27AC570800348CB9 /* MealsContainerDecodable.swift in Sources */,
 				F61A64F727AC07E800348CB9 /* MealsRepositoryImpl.swift in Sources */,
@@ -1588,6 +1600,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F9F9708129AA9D7C000EEF98 /* Meals.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F9F9708229AA9D7C000EEF98 /* Meals.xcdatamodel */,
+			);
+			currentVersion = F9F9708229AA9D7C000EEF98 /* Meals.xcdatamodel */;
+			path = Meals.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F6A878DD27A958100029DC63 /* Project object */;
 }
