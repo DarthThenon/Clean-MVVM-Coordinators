@@ -24,6 +24,10 @@ class BaseTableViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        printDeinit()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

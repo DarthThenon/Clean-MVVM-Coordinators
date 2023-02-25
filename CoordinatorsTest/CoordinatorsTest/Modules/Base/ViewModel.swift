@@ -26,4 +26,12 @@ class BaseViewModel: ObservableObject {
             .compactMap { $0 }
             .eraseToAnyPublisher()
     }
+    
+    deinit {
+        #if DEBUG
+        
+        print("♻️ \(String(describing: type(of: self))) has been deinitialized")
+        
+        #endif
+    }
 }
