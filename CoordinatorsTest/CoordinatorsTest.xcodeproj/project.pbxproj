@@ -381,12 +381,7 @@
 		F61A64F827AC08FE00348CB9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F61A64F927AC090C00348CB9 /* MealCategoryCodable.swift */,
-				F61A64FB27AC095F00348CB9 /* MealCategoryContainerCodable.swift */,
-				F61A652727AC4B7E00348CB9 /* MealDecodable.swift */,
-				F61A652927AC570800348CB9 /* MealsContainerDecodable.swift */,
-				F90B818F27AC7E210055AB9C /* MealDetailsDecodable.swift */,
-				F90B819127AC82170055AB9C /* MealDetailsContainerDecodable.swift */,
+				F9F9707F29AA9CF8000EEF98 /* ServerCodableModels */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -670,6 +665,19 @@
 				F9AF742B29A2BE3F00871AED /* StubsCreations.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F9F9707F29AA9CF8000EEF98 /* ServerCodableModels */ = {
+			isa = PBXGroup;
+			children = (
+				F61A64F927AC090C00348CB9 /* MealCategoryCodable.swift */,
+				F61A64FB27AC095F00348CB9 /* MealCategoryContainerCodable.swift */,
+				F61A652727AC4B7E00348CB9 /* MealDecodable.swift */,
+				F61A652927AC570800348CB9 /* MealsContainerDecodable.swift */,
+				F90B818F27AC7E210055AB9C /* MealDetailsDecodable.swift */,
+				F90B819127AC82170055AB9C /* MealDetailsContainerDecodable.swift */,
+			);
+			path = ServerCodableModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
