@@ -26,7 +26,7 @@ final class AppDependencyContainer {
             networkRepository: networkMealsRepository
         )
         let getMealCategoriesUseCase = GetMealCategoriesUseCaseImp(mealCategoriesRepository: mealsRepository)
-        let getMealsByCategoryUseCase = GetMealsByCategoryUseCaseImp(mealsByCategoryRepository: networkMealsRepository)
+        let getMealsByCategoryUseCase = GetMealsByCategoryUseCaseImp(mealsByCategoryRepository: mealsRepository)
         let getMealDetailsByIdUseCase = GetMealDetailsByIdUseCaseImp(repository: networkMealsRepository)
         
         return MealDependencyContainer(getMealsCategoriesUseCase: getMealCategoriesUseCase,
