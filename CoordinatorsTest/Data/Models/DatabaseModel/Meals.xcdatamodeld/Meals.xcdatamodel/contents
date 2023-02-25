@@ -12,6 +12,7 @@
         </uniquenessConstraints>
     </entity>
     <entity name="MealEntity" representedClassName="MealEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="imageUrlString" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
