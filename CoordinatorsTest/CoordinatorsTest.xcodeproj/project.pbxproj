@@ -519,9 +519,8 @@
 		F61A653D27AC69EE00348CB9 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				F61A64F427AC030F00348CB9 /* NetworkRepository.swift */,
-				F61A64F627AC07E800348CB9 /* MealsRepositoryImpl.swift */,
-				F9F9707D29AA9B95000EEF98 /* DataBaseService.swift */,
+				F9F9708529AAA068000EEF98 /* LocalRepositories */,
+				F9F9708429AAA058000EEF98 /* NetworkRepositories */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -689,6 +688,23 @@
 				F9F9708129AA9D7C000EEF98 /* Meals.xcdatamodeld */,
 			);
 			path = DatabaseModel;
+			sourceTree = "<group>";
+		};
+		F9F9708429AAA058000EEF98 /* NetworkRepositories */ = {
+			isa = PBXGroup;
+			children = (
+				F61A64F427AC030F00348CB9 /* NetworkRepository.swift */,
+				F61A64F627AC07E800348CB9 /* MealsRepositoryImpl.swift */,
+			);
+			path = NetworkRepositories;
+			sourceTree = "<group>";
+		};
+		F9F9708529AAA068000EEF98 /* LocalRepositories */ = {
+			isa = PBXGroup;
+			children = (
+				F9F9707D29AA9B95000EEF98 /* DataBaseService.swift */,
+			);
+			path = LocalRepositories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
