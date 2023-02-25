@@ -15,6 +15,16 @@ public final class LocalMealsRepository {
     public init(databaseService: DatabaseServiceProtocol) {
         self.databaseService = databaseService
     }
+    
+    func save<DomainModel: EntityMappable>(models: [DomainModel]) {
+        databaseService.write { moc in
+            let entities = models.map {
+                $0.toEntity(in: moc)
+            }
+            
+            print("❇️ Saved \(entities.count) \(type(of: models)) entities to the database")
+        }
+    }
 }
 
 extension LocalMealsRepository: MealCategoriesRepository {
@@ -40,14 +50,34 @@ extension LocalMealsRepository: MealCategoriesRepository {
         }
         .eraseToAnyPublisher()
     }
-    
-    func save(categories: [MealCategory]) {
-        databaseService.write { moc in
-            let entities = categories.map {
-                $0.toEntity(inMoc: moc)
+}
+
+extension LocalMealsRepository: MealsByCategoryRepository {
+    public func getMeals(by category: String) -> AnyPublisher<[Meal], Error> {
+        Future { [weak self] promise in
+            self?.databaseService.readInBackground { context in
+                let request = MealEntity.fetchRequest()
+                let predicate = NSPredicate(format: "category == %@", category)
+                let sortDescriptor = NSSortDescriptor(
+                    keyPath: \MealEntity.title,
+                    ascending: true
+                )
+                
+                request.predicate = predicate
+                request.sortDescriptors = [sortDescriptor]
+                
+                do {
+                    let result = try context.fetch(request)
+                    let meals = result.compactMap { $0.toDomainModel() }
+                    
+                    promise(.success(meals))
+                    
+                    print("❇️ Fetched \(meals.count) meals from the database")
+                } catch {
+                    promise(.failure(error))
+                }
             }
-            
-            print("❇️ Saved \(entities.count) meal category entities to the database")
         }
+        .eraseToAnyPublisher()
     }
 }

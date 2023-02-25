@@ -40,7 +40,13 @@ extension NetworkMealsRepository: MealsByCategoryRepository {
         let requestPublisher: AnyPublisher<MealsContainerDecodable, Error> = networkRepository.executeRequest(for: url)
         
         return requestPublisher
-            .map { $0.meals.map { $0.toDomainModel() } }
+            .map {
+                let meals = $0.meals.map { $0.toDomainModel(category: category) }
+                
+                print("❇️ Fetched \(meals.count) meals from the server")
+                
+                return meals
+            }
             .eraseToAnyPublisher()
     }
 }
