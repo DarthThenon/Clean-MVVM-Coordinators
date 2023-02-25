@@ -10,6 +10,7 @@ import Domain
 import Combine
 
 protocol MealsCategoriesViewModelProtocol {
+    var isSearchAvailable: Bool { get }
     var categoriesPublisher: AnyPublisher<[MealCategory], Never> { get }
     
     func viewDidLoad()
@@ -24,12 +25,16 @@ final class MealsCategoriesViewModel: MealsCategoriesViewModelProtocol, MealsCat
     
     var onFinish: (() -> Void)?
     var onSelectCategory: ((String) -> Void)?
+    let isSearchAvailable: Bool
     var categoriesPublisher: AnyPublisher<[MealCategory], Never> {
         categoriesSubject.eraseToAnyPublisher()
     }
     
-    init(getMealsCategoriesUseCase: GetMealCategoriesUseCase,
-         getMealCategoriesBySearchQueryUseCase: GetMealCategoriesBySearchQueryUseCaseProtocol) {
+    init(isSearchAvailable: Bool,
+         getMealsCategoriesUseCase: GetMealCategoriesUseCase,
+         getMealCategoriesBySearchQueryUseCase: GetMealCategoriesBySearchQueryUseCaseProtocol
+    ) {
+        self.isSearchAvailable = isSearchAvailable
         self.getMealsCategoriesUseCase = getMealsCategoriesUseCase
         self.getMealCategoriesBySearchQueryUseCase = getMealCategoriesBySearchQueryUseCase
     }

@@ -15,15 +15,20 @@ protocol MealsCategoriesAssembable {
 final class MealsCategoriesAssembler: MealsCategoriesAssembable {
     private let getMealsCategoriesUseCase: GetMealCategoriesUseCase
     private let getMealCategoriesBySearchQueryUseCase: GetMealCategoriesBySearchQueryUseCaseProtocol
+    private let isSearchAvailable: Bool
     
-    init(getMealsCategoriesUseCase: GetMealCategoriesUseCase,
-         getMealCategoriesBySearchQueryUseCase: GetMealCategoriesBySearchQueryUseCaseProtocol) {
+    init(isSearchAvailable: Bool,
+         getMealsCategoriesUseCase: GetMealCategoriesUseCase,
+         getMealCategoriesBySearchQueryUseCase: GetMealCategoriesBySearchQueryUseCaseProtocol
+    ) {
+        self.isSearchAvailable = isSearchAvailable
         self.getMealsCategoriesUseCase = getMealsCategoriesUseCase
         self.getMealCategoriesBySearchQueryUseCase = getMealCategoriesBySearchQueryUseCase
     }
     
     func assemble() -> (UIViewController, MealsCategoriesOutput) {
         let viewModel = MealsCategoriesViewModel(
+            isSearchAvailable: isSearchAvailable,
             getMealsCategoriesUseCase: getMealsCategoriesUseCase,
             getMealCategoriesBySearchQueryUseCase: getMealCategoriesBySearchQueryUseCase
         )

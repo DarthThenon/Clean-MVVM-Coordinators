@@ -13,11 +13,15 @@ struct MealDependencyContainer {
     private let getMealsByCategoryUseCase: GetMealsByCategoryUseCase
     private let getMealDetailsByIdUseCase: GetMealDetailsByIdUseCase
     private let getMealCategoriesBySearchQueryUseCase: GetMealCategoriesBySearchQueryUseCaseProtocol
+    private let isSearchCategoriesAvailable: Bool
     
-    init(getMealsCategoriesUseCase: GetMealCategoriesUseCase,
+    init(isSearchCategoriesAvailable: Bool,
+         getMealsCategoriesUseCase: GetMealCategoriesUseCase,
          getMealsByCategoryUseCase: GetMealsByCategoryUseCase,
          getMealDetailsByIdUseCase: GetMealDetailsByIdUseCase,
-         getMealCategoriesBySearchQueryUseCase: GetMealCategoriesBySearchQueryUseCaseProtocol) {
+         getMealCategoriesBySearchQueryUseCase: GetMealCategoriesBySearchQueryUseCaseProtocol
+    ) {
+        self.isSearchCategoriesAvailable = isSearchCategoriesAvailable
         self.getMealsCategoriesUseCase = getMealsCategoriesUseCase
         self.getMealsByCategoryUseCase = getMealsByCategoryUseCase
         self.getMealDetailsByIdUseCase = getMealDetailsByIdUseCase
@@ -26,6 +30,7 @@ struct MealDependencyContainer {
     
     func createMealsCoordinator() -> MealsCoordinator {
         let categoriesAssembler = MealsCategoriesAssembler(
+            isSearchAvailable: isSearchCategoriesAvailable,
             getMealsCategoriesUseCase: getMealsCategoriesUseCase,
             getMealCategoriesBySearchQueryUseCase: getMealCategoriesBySearchQueryUseCase
         )

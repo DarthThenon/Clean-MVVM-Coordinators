@@ -33,6 +33,7 @@ final class AppDependencyContainer {
         )
         
         return MealDependencyContainer(
+            isSearchCategoriesAvailable: mealsRepository.isSearchCategoriesByTitleEnabled,
             getMealsCategoriesUseCase: getMealCategoriesUseCase,
             getMealsByCategoryUseCase: getMealsByCategoryUseCase,
             getMealDetailsByIdUseCase: getMealDetailsByIdUseCase,
