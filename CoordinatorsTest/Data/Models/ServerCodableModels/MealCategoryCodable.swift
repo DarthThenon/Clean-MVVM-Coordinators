@@ -22,4 +22,15 @@ extension MealCategoryCodable {
                           description: strCategoryDescription,
                           imageURL: strCategoryThumb.flatMap(URL.init))
     }
+    
+    func toEntity() -> MealCategoryEntity {
+        let entity = MealCategoryEntity()
+        
+        entity.id = idCategory
+        entity.title = strCategory
+        entity.imageUrlString = strCategoryThumb
+        entity.body = strCategoryDescription
+        
+        return entity
+    }
 }
