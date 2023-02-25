@@ -8,13 +8,13 @@
 import Foundation
 import CoreData
 
-protocol DatabaseServiceProtocol: AnyObject {
+public protocol DatabaseServiceProtocol: AnyObject {
     func write(_ block: @escaping (NSManagedObjectContext) -> Void)
     func readInBackground(_ block: @escaping (NSManagedObjectContext) -> Void)
     func batchDelete(fetchRequest: NSFetchRequest<NSFetchRequestResult>)
 }
 
-final class DatabaseService: DatabaseServiceProtocol {
+public final class DBService: DatabaseServiceProtocol {
     private(set) lazy var uiMoc: NSManagedObjectContext = makeUIMoc()
     private lazy var writeMoc: NSManagedObjectContext = makeWriteMoc()
     private lazy var workMoc: NSManagedObjectContext = makeWorkMoc()
@@ -22,15 +22,13 @@ final class DatabaseService: DatabaseServiceProtocol {
     private lazy var persistentContainer: NSPersistentContainer = {
        makePersistentContainer()
     }()
-    private let modelName: String
     private let inMemory: Bool
     
-    init(modelName: String = Bundle.main.infoDictionary!["CFBundleName"] as! String, inMemory: Bool = false) {
-        self.modelName = modelName
+    public init(inMemory: Bool = false) {
         self.inMemory = inMemory
     }
     
-    func write(_ block: @escaping (NSManagedObjectContext) -> Void) {
+    public func write(_ block: @escaping (NSManagedObjectContext) -> Void) {
         writeMoc.perform { [weak self] in
             guard let self = self else { return }
             
@@ -46,7 +44,7 @@ final class DatabaseService: DatabaseServiceProtocol {
         }
     }
     
-    func readInBackground(_ block: @escaping (NSManagedObjectContext) -> Void) {
+    public func readInBackground(_ block: @escaping (NSManagedObjectContext) -> Void) {
         workMoc.perform { [weak self] in
             guard let self = self else { return }
             
@@ -54,7 +52,7 @@ final class DatabaseService: DatabaseServiceProtocol {
         }
     }
     
-    func batchDelete(fetchRequest: NSFetchRequest<NSFetchRequestResult>) {
+    public func batchDelete(fetchRequest: NSFetchRequest<NSFetchRequestResult>) {
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
         batchDeleteRequest.resultType = .resultTypeObjectIDs
@@ -93,7 +91,7 @@ final class DatabaseService: DatabaseServiceProtocol {
     }
 }
 
-private extension DatabaseService {
+private extension DBService {
     func makeUIMoc() -> NSManagedObjectContext {
         makeMoc(concurrencyType: .mainQueueConcurrencyType, parent: writeMoc)
     }
@@ -123,7 +121,10 @@ private extension DatabaseService {
     }
     
     func makePersistentContainer(onConfigured: (() -> Void)? = nil) -> NSPersistentContainer {
-        let container = NSPersistentContainer(name: modelName)
+        let bundle = Bundle(identifier: "com.kodeni.Data")!
+        let modelUrl = bundle.url(forResource: "Meals", withExtension: "momd")!
+        let model = NSManagedObjectModel(contentsOf: modelUrl)!
+        let container = NSPersistentContainer(name: "Meals", managedObjectModel: model)
         
         configureDescriptions(ofPersistentContainer: container)
         

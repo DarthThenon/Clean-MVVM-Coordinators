@@ -15,7 +15,7 @@ final class AppDependencyContainer {
     
     init() {
         networkRepository = RealNetworkRepository()
-        databaseService = DatabaseService()
+        databaseService = DBService()
     }
     
     func createMealDependencyContainer() -> MealDependencyContainer {
