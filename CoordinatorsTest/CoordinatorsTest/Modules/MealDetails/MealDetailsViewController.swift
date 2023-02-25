@@ -9,9 +9,13 @@ import UIKit
 import Domain
 import Combine
 
-final class MealDetailsViewController: UIViewController {
+final class MealDetailsViewController: BaseViewController {
     @IBOutlet private weak var mealImageView: UIImageView!
     @IBOutlet private weak var mealTitleLabel: UILabel!
+    @IBOutlet private weak var categoryLabel: UILabel!
+    @IBOutlet private weak var tagsLabel: UILabel!
+    @IBOutlet private weak var ingredientsLabel: UILabel!
+    @IBOutlet private weak var linkButton: UIButton!
     
     private let viewModel: MealDetailsViewModelProtocol
     private var cancellableSet: Set<AnyCancellable> = []
@@ -22,17 +26,14 @@ final class MealDetailsViewController: UIViewController {
         super.init(nibName: "MealDetailsViewController", bundle: .main)
     }
     
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close,
-                                                           target: self,
-                                                           action: #selector(closeAction))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .close,
+            target: self,
+            action: #selector(closeAction)
+        )
         
         viewModel.mealDetailsPublisher
             .sink { [unowned self] mealDetails in
@@ -47,6 +48,12 @@ final class MealDetailsViewController: UIViewController {
         mealTitleLabel.text = details.title
         mealImageView.fetchImage(from: details.imageUrl)
             .flatMap { $0.store(in: &cancellableSet) }
+        tagsLabel.text = details.tags
+        ingredientsLabel.text = details.ingredients.map {
+            "\($0.title) - \($0.measure)"
+        }.joined(separator: "\n")
+        linkButton.setTitle(details.link?.absoluteString, for: .normal)
+        categoryLabel.text = details.category
     }
     
     @objc private func closeAction() {

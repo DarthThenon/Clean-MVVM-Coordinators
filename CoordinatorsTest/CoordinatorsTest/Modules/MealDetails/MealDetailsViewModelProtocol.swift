@@ -16,7 +16,7 @@ protocol MealDetailsViewModelProtocol {
     func close()
 }
 
-final class MealDetailsViewModel: MealDetailsViewModelProtocol, MealDetailsOutput {
+final class MealDetailsViewModel: BaseViewModel, MealDetailsViewModelProtocol, MealDetailsOutput {
     private let getMealDetailsByIdUseCase: GetMealDetailsByIdUseCase
     private let mealID: String
     private let mealDetailsSubject: PassthroughSubject<MealDetails, Never> = .init()
@@ -27,7 +27,6 @@ final class MealDetailsViewModel: MealDetailsViewModelProtocol, MealDetailsOutpu
     var mealDetailsPublisher: AnyPublisher<MealDetails, Never> {
         mealDetailsSubject.eraseToAnyPublisher()
     }
-    
     
     init(mealID: String, getMealDetailsByIdUseCase: GetMealDetailsByIdUseCase) {
         self.mealID = mealID
