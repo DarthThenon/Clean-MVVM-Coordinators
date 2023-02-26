@@ -26,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="4f9-um-88T">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                    <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x0a-pv-Mru">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="738"/>
@@ -187,7 +187,7 @@
                 <constraint firstItem="x0a-pv-Mru" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="0oM-K7-rdt"/>
                 <constraint firstItem="4f9-um-88T" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="QWZ-nm-9Wu"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="4f9-um-88T" secondAttribute="bottom" id="X2I-qu-del"/>
-                <constraint firstItem="4f9-um-88T" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="etY-nH-Tn9"/>
+                <constraint firstItem="4f9-um-88T" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="etY-nH-Tn9"/>
                 <constraint firstItem="4f9-um-88T" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pXD-9o-yc0"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="150.66964285714286"/>
