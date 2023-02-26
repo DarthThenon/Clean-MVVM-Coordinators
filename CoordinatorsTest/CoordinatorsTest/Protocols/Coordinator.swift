@@ -48,6 +48,7 @@ extension Coordinator {
         childs.append(child)
         
         child.parent = WeakRefCoordinatorWrapper(coordinator: self)
+        child.navigationController?.modalPresentationStyle = .fullScreen
         child.navigationController.flatMap {
             navigationController?.present($0, animated: animated)
         }
