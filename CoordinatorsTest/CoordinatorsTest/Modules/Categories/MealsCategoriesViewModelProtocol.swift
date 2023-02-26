@@ -15,13 +15,13 @@ protocol MealsCategoriesViewModelProtocol {
     
     func viewDidLoad()
     func selectCategory(_ category: String)
+    func search(query: String)
 }
 
-final class MealsCategoriesViewModel: MealsCategoriesViewModelProtocol, MealsCategoriesOutput {
+final class MealsCategoriesViewModel: BaseViewModel, MealsCategoriesViewModelProtocol, MealsCategoriesOutput {
     private let categoriesSubject: CurrentValueSubject<[MealCategory], Never> = .init([])
     private let getMealsCategoriesUseCase: GetMealCategoriesUseCase
     private let getMealCategoriesBySearchQueryUseCase: GetMealCategoriesBySearchQueryUseCaseProtocol
-    private var cancellable: AnyCancellable?
     
     var onFinish: (() -> Void)?
     var onSelectCategory: ((String) -> Void)?
@@ -40,20 +40,37 @@ final class MealsCategoriesViewModel: MealsCategoriesViewModelProtocol, MealsCat
     }
     
     func viewDidLoad() {
-        cancellable = getMealsCategoriesUseCase.execute()
-            .receive(on: OperationQueue.main)
-            .sink(receiveCompletion: { completion in
-                guard case .failure(let error) = completion
-                else { return }
-                
-                assertionFailure(error.localizedDescription)
-                
-            }, receiveValue: { [unowned self] categories in
-                self.categoriesSubject.send(categories)
-            })
+        let publisher = getMealsCategoriesUseCase.execute()
+        
+        invokeCategories(publisher: publisher)
     }
     
     func selectCategory(_ category: String) {
         onSelectCategory?(category)
+    }
+    
+    func search(query: String) {
+        let publisher = query.isEmpty
+        ? getMealsCategoriesUseCase.execute()
+        : getMealCategoriesBySearchQueryUseCase.execute(for: query)
+        
+        invokeCategories(publisher: publisher)
+    }
+}
+
+private extension MealsCategoriesViewModel {
+    func invokeCategories(publisher: AnyPublisher<[MealCategory], Error>) {
+        publisher
+            .receive(on: OperationQueue.main)
+            .sink(receiveCompletion: { [unowned self] completion in
+                guard case .failure(let error) = completion
+                else { return }
+                
+                self.error = error
+                
+            }, receiveValue: { [unowned self] categories in
+                self.categoriesSubject.send(categories)
+            })
+            .store(in: &cancellableSet)
     }
 }

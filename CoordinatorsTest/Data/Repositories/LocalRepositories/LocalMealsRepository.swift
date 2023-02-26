@@ -37,7 +37,7 @@ extension LocalMealsRepository: MealCategoriesRepository {
     }
     
     public func getCategories(byTitle title: String) -> AnyPublisher<[MealCategory], Error> {
-        getCategories(with: NSPredicate(format: "title ==[c] %@", title))
+        getCategories(with: NSPredicate(format: "title CONTAINS[c] %@", title))
     }
     
     private func getCategories(with predicate: NSPredicate?) -> AnyPublisher<[MealCategory], Error> {

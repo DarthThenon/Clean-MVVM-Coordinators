@@ -21,6 +21,8 @@ extension ViewModel {
 class BaseViewModel: ObservableObject {
     @Published var error: Error?
     
+    var cancellableSet: Set<AnyCancellable> = []
+    
     var errorPublisher: AnyPublisher<Error, Never> {
         $error
             .compactMap { $0 }

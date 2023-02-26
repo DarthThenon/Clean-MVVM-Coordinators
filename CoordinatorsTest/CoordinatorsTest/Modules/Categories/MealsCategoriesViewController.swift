@@ -33,11 +33,7 @@ final class MealsCategoriesViewController: UITableViewController, CustomViewCont
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
-        
-        navigationItem.title = "Categories"
-        
-        tableView.register(UINib(nibName: "MealCategoryTableViewCell", bundle: .main), forCellReuseIdentifier: "MealCategoryTableViewCell")
+        prepareUI()
         
         cancellable = viewModel.categoriesPublisher
             .sink(receiveValue: { [unowned self] categories in
@@ -47,15 +43,30 @@ final class MealsCategoriesViewController: UITableViewController, CustomViewCont
         
         viewModel.viewDidLoad()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+}
+
+private extension MealsCategoriesViewController {
+    func prepareUI() {
+        view.backgroundColor = .white
         
-//        let vc = UIViewController()
-//        
-//        vc.view.backgroundColor = .purple
-//        
-//        present(vc, duration: 10, withAnimationType: ViewControllerRoundedPresentingAnimation.self)
+        navigationItem.title = "Categories"
+        
+        tableView.register(UINib(nibName: "MealCategoryTableViewCell", bundle: .main), forCellReuseIdentifier: "MealCategoryTableViewCell")
+        tableView.keyboardDismissMode = .onDrag
+        
+        if viewModel.isSearchAvailable {
+            addSearchBar()
+        }
+    }
+    
+    func addSearchBar() {
+        let barSize = CGSize(width: view.bounds.width, height: 40)
+        let searchBar = UISearchBar(frame: CGRect(origin: .zero, size: barSize))
+        
+        searchBar.placeholder = "Search category"
+        searchBar.delegate = self
+        
+        tableView.tableHeaderView = searchBar
     }
     
     private func createDataSource() -> DataSource {
@@ -69,7 +80,7 @@ final class MealsCategoriesViewController: UITableViewController, CustomViewCont
         }
     }
     
-    private func reloadTable() {
+    func reloadTable() {
         var snapshot = NSDiffableDataSourceSnapshot<Int, MealCategory>()
         
         snapshot.appendSections([0])
@@ -82,6 +93,12 @@ final class MealsCategoriesViewController: UITableViewController, CustomViewCont
 extension MealsCategoriesViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.selectCategory(categories[indexPath.row].title)
+    }
+}
+
+extension MealsCategoriesViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.search(query: searchText)
     }
 }
 

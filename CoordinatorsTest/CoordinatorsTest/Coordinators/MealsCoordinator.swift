@@ -12,7 +12,7 @@ final class MealsCoordinator: BaseCoordinator {
     private let mealsAssembler: MealsAssembable
     private let mealDetailsCoordinatorFactory: (String) -> Coordinator
     
-    init(navigationController: UINavigationController,
+    init(navigationController: BaseNavigationController,
          mealsCategoriesAssembler: MealsCategoriesAssembable,
          mealsAssembler: MealsAssembable,
          mealDetailsCoordinatorFactory: @escaping (String) -> Coordinator) {

@@ -12,6 +12,7 @@ import Domain
 public final class CompositeMealsRepository {
     private let localRepository: LocalMealsRepository
     private let networkRepository: NetworkMealsRepository
+    private let queue = DispatchQueue(label: "com.compositeMealsRepository.queue", attributes: .concurrent)
     
     public init(localRepository: LocalMealsRepository, networkRepository: NetworkMealsRepository) {
         self.localRepository = localRepository
@@ -34,6 +35,7 @@ extension CompositeMealsRepository: MealCategoriesRepository {
             }.eraseToAnyPublisher()
         
         return localPublisher
+            .subscribe(on: queue)
             .prefix(untilOutputFrom: networkPublisher)
             .merge(with: networkPublisher)
             .eraseToAnyPublisher()
@@ -41,6 +43,8 @@ extension CompositeMealsRepository: MealCategoriesRepository {
     
     public func getCategories(byTitle title: String) -> AnyPublisher<[MealCategory], Error> {
         localRepository.getCategories(byTitle: title)
+            .subscribe(on: queue)
+            .eraseToAnyPublisher()
     }
 }
 
@@ -54,6 +58,7 @@ extension CompositeMealsRepository: MealsByCategoryRepository {
             }.eraseToAnyPublisher()
         
         return localPublisher
+            .subscribe(on: queue)
             .prefix(untilOutputFrom: networkPublisher)
             .merge(with: networkPublisher)
             .eraseToAnyPublisher()

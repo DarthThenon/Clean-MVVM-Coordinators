@@ -13,7 +13,7 @@ final class MealDetailsCoordinator: BaseCoordinator {
     
     init(mealID: String,
          mealDetailsAssembler: MealDetailsAssembable,
-         navigationController: UINavigationController?) {
+         navigationController: BaseNavigationController?) {
         self.mealID = mealID
         self.mealDetailsAssembler = mealDetailsAssembler
         

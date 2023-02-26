@@ -12,7 +12,7 @@ class BaseCoordinator: Coordinator {
     var childs: [Coordinator] = []
     var parent: WeakRefCoordinatorWrapper?
     
-    init(navigationController: UINavigationController?) {
+    init(navigationController: BaseNavigationController?) {
         self.navigationController = navigationController
     }
     

@@ -95,6 +95,7 @@
 		F9AF743229A2C2E100871AED /* MealDetailsDecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF743129A2C2E100871AED /* MealDetailsDecodableTests.swift */; };
 		F9AF743429A2CF6D00871AED /* MealsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF743329A2CF6D00871AED /* MealsRepositoryTests.swift */; };
 		F9AF743629A2CFA800871AED /* MockNetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF743529A2CFA800871AED /* MockNetworkRepository.swift */; };
+		F9F8AB1D29AAE0E1002D388D /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F8AB1C29AAE0E1002D388D /* BaseNavigationController.swift */; };
 		F9F9707A29AA988F000EEF98 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F9707929AA988F000EEF98 /* BaseViewController.swift */; };
 		F9F9707C29AA98CC000EEF98 /* UIViewController + CustomDeinitPrinting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F9707B29AA98CC000EEF98 /* UIViewController + CustomDeinitPrinting.swift */; };
 		F9F9707E29AA9B95000EEF98 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F9707D29AA9B95000EEF98 /* DatabaseService.swift */; };
@@ -277,6 +278,7 @@
 		F9AF743129A2C2E100871AED /* MealDetailsDecodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailsDecodableTests.swift; sourceTree = "<group>"; };
 		F9AF743329A2CF6D00871AED /* MealsRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsRepositoryTests.swift; sourceTree = "<group>"; };
 		F9AF743529A2CFA800871AED /* MockNetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkRepository.swift; sourceTree = "<group>"; };
+		F9F8AB1C29AAE0E1002D388D /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		F9F9707929AA988F000EEF98 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F9F9707B29AA98CC000EEF98 /* UIViewController + CustomDeinitPrinting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + CustomDeinitPrinting.swift"; sourceTree = "<group>"; };
 		F9F9707D29AA9B95000EEF98 /* DatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
@@ -617,6 +619,7 @@
 				F90D4558298549E600703CB4 /* ViewModel.swift */,
 				F90D455A29854BD000703CB4 /* BaseTableViewController.swift */,
 				F9F9707929AA988F000EEF98 /* BaseViewController.swift */,
+				F9F8AB1C29AAE0E1002D388D /* BaseNavigationController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1104,6 +1107,7 @@
 				F61A653127AC5B6300348CB9 /* MealsAssembable.swift in Sources */,
 				F90B819927AC831B0055AB9C /* MealDetailsViewModelProtocol.swift in Sources */,
 				F90B819627AC82EE0055AB9C /* MealDetailsViewController.swift in Sources */,
+				F9F8AB1D29AAE0E1002D388D /* BaseNavigationController.swift in Sources */,
 				F61A651227AC362400348CB9 /* MealsCoordinator.swift in Sources */,
 				F61A652D27AC57C000348CB9 /* MealsViewController.swift in Sources */,
 				F61A650827AC182400348CB9 /* MealsCategoriesViewModelProtocol.swift in Sources */,
